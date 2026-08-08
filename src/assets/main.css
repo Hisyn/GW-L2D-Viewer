@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-lg: 72rem;
+}
+
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #374151 #1f2937;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}

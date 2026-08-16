@@ -97,9 +97,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import * as PIXI from 'pixi.js'
-import { Application, Renderer } from 'pixi.js'
-import { InteractionManager } from '@pixi/interaction'
-import { Ticker, TickerPlugin } from '@pixi/ticker'
+import { Ticker } from '@pixi/ticker'
 import characterList from '@/utils/character_list'
 
 const props = defineProps<{
@@ -135,6 +133,7 @@ let currentModel: Live2DModelInstance | null = null
 let componentActive = true
 let renderSessionId = 0
 const cubismPrimed = ref(false)
+let live2dTickerRegistered = false
 
 type Live2DModelInstance = {
   x: number
@@ -377,18 +376,11 @@ async function renderLive2DModel() {
     }
     ;(window as typeof window & { PIXI?: typeof PIXI }).PIXI = PIXI
 
-    if (!(Renderer as unknown as { registerPlugin?: (name: string, plugin: unknown) => void }).registerPlugin) {
-      throw new Error('Pixi renderer plugins are unavailable.')
-    }
-    if (!(Application as unknown as { registerPlugin?: (name: string, plugin: unknown) => void }).registerPlugin) {
-      throw new Error('Pixi application plugins are unavailable.')
-    }
-
-    Renderer.registerPlugin('interaction', InteractionManager)
-    Application.registerPlugin(TickerPlugin)
-
     const { Live2DModel: Live2DModelCtor } = await import('pixi-live2d-display/cubism4')
-    Live2DModelCtor.registerTicker(Ticker)
+    if (!live2dTickerRegistered) {
+      Live2DModelCtor.registerTicker(Ticker)
+      live2dTickerRegistered = true
+    }
 
     currentApp = new PIXI.Application({
       view,

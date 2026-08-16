@@ -98,8 +98,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import * as PIXI from 'pixi.js'
 import { Application, Renderer } from 'pixi.js'
-import { InteractionManager } from '@pixi/interaction'
-import { Ticker, TickerPlugin } from '@pixi/ticker'
+import { InteractionManager, Ticker, TickerPlugin } from 'pixi.js'
 import characterList from '@/utils/character_list'
 
 const props = defineProps<{

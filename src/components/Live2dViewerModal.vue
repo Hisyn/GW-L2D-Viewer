@@ -151,6 +151,13 @@ const resolvedCharacterName = computed(() => {
   return char?.charName || props.characterId
 })
 
+function resolveLive2dAssetUrl(folderName: string, relativePath: string) {
+  const base = import.meta.env.BASE_URL || './'
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`
+  const safePath = relativePath.replace(/^\.\//, '')
+  return new URL(`${normalizedBase}assets/live2dcubism/${folderName}/${safePath}`, window.location.href).toString()
+}
+
 function cleanupRenderer() {
   if (currentModel) {
     currentModel.destroy?.()
@@ -314,8 +321,14 @@ async function readLive2DAssets(characterId: string | null | undefined) {
     return null
   }
 
-  const modelUrl = await modelEntry[1]()
-  const physicsUrl = physicsFile ? await physicsFile[1]() : null
+  // Dev server serves files straight from src, so glob URLs already resolve correctly there.
+  // Production build hashes/flattens glob URLs, so use the folder copied by copy-assets.js instead.
+  const modelRelativePath = modelEntry[0].replace(folderPrefix, '')
+  const physicsRelativePath = physicsFile ? physicsFile[0].replace(folderPrefix, '') : null
+  const modelUrl = import.meta.env.DEV ? await modelEntry[1]() : resolveLive2dAssetUrl(folderName, modelRelativePath)
+  const physicsUrl = physicsRelativePath
+    ? (import.meta.env.DEV ? await physicsFile![1]() : resolveLive2dAssetUrl(folderName, physicsRelativePath))
+    : null
 
   let parsedMotionNames: string[] = [...new Set(
     motionFiles

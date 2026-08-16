@@ -97,7 +97,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import * as PIXI from 'pixi.js'
-import { Ticker } from '@pixi/ticker'
 import characterList from '@/utils/character_list'
 
 const props = defineProps<{
@@ -378,7 +377,7 @@ async function renderLive2DModel() {
 
     const { Live2DModel: Live2DModelCtor } = await import('pixi-live2d-display/cubism4')
     if (!live2dTickerRegistered) {
-      Live2DModelCtor.registerTicker(Ticker)
+      Live2DModelCtor.registerTicker(PIXI.Ticker)
       live2dTickerRegistered = true
     }
 

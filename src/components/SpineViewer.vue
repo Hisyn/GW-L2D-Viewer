@@ -19,8 +19,12 @@
       >
         <BgEditIcon />
       </button>
-      <div class="flex flex-row gap-2">
+      <div
+        class="grid grid-cols-2 items-center gap-2 max-w-[calc(100vw-1rem)] rounded-2xl bg-slate-900/70 p-2 backdrop-blur-sm lg:flex lg:flex-row lg:flex-nowrap lg:max-w-none lg:rounded-none lg:bg-transparent lg:p-0"
+        :class="{ 'opacity-0 pointer-events-none': showingMobileOverlay }"
+      >
         <button
+          title="Inspect animation"
           type="button"
           aria-label="Inspect animation"
           :aria-pressed="inspectMode"
@@ -30,13 +34,16 @@
         >
           <InspectAnimationIcon :active="inspectMode" />
         </button>
+
         <button
+          title="Layer selection mode"
           @click="store.layerSelectionEnabled = !store.layerSelectionEnabled"
           class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
         >
           <LayerSelectIcon :active="store.layerSelectionEnabled" />
         </button>
         <button
+          title="Zoom out"
           aria-label="Zoom out"
           @click="zoomOut"
           class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
@@ -44,11 +51,46 @@
           <MinusIcon />
         </button>
         <button
+          title="Zoom in"
           aria-label="Zoom in"
           @click="zoomIn"
-          class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+          class="w-9 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
         >
           <PlusIcon />
+        </button>
+        <button
+          type="button"
+          title="Play Ultimate Ability Cutscene"
+          aria-label="Play video"
+          @click="openVideoModal"
+          :disabled="!currentVideoUrl"
+          v-show="currentVideoUrl && !showingMobileOverlay"
+          class="inline-flex w-full lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-colors"
+        >
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
+            <svg aria-hidden="true" viewBox="0 0 16 16" class="h-4 w-4 fill-current text-white">
+              <path d="M3 2.5v11l10-5.5-10-5.5Z" />
+            </svg>
+          </span>
+          <span class="leading-none hidden sm:inline">Play Ultimate Ability Cutscene</span>
+          <span class="leading-none sm:hidden">Cutscene</span>
+        </button>
+        <button
+          v-if="hasLive2dViewer"
+          type="button"
+          title="Open Live2D Cubism Viewer"
+          aria-label="Open Live2D Cubism Viewer"
+          @click="live2dViewerVisible = true"
+          @mouseenter.prevent="onPrimeLive2D"
+          @pointerdown.prevent="onPrimeLive2D"
+          v-show="!showingMobileOverlay"
+          class="inline-flex w-full lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors"
+        >
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
+            <span class="text-[9px] leading-none font-bold tracking-wide">L2D</span>
+          </span>
+          <span class="leading-none hidden sm:inline">Bride - Live2D</span>
+          <span class="leading-none sm:hidden">Live2D</span>
         </button>
       </div>
     </div>
@@ -106,6 +148,19 @@
       :disabled="showingMobileOverlay"
       class="seek-range absolute bottom-0 left-0 w-full z-30"
     />
+    <VideoModal
+      v-if="videoModalVisible"
+      :src="currentVideoUrl"
+      :character-id="store.selectedCharacterId"
+      :animation="store.selectedAnimation"
+      @close="videoModalVisible = false"
+    />
+    <Live2dViewerModal
+      v-if="live2dViewerVisible && store.selectedCharacterId"
+      :character-id="store.selectedCharacterId"
+      :character-name="selectedCharacter?.charName || null"
+      @close="live2dViewerVisible = false"
+    />
   </div>
 </template>
 <script setup lang="ts">
@@ -147,6 +202,11 @@ import InspectAnimationIcon from '@/components/icons/InspectAnimationIcon.vue'
 import LayerSelectIcon from '@/components/icons/LayerSelectIcon.vue'
 import MinusIcon from '@/components/icons/MinusIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue'
+import VideoModal from '@/components/VideoModal.vue'
+import Live2dViewerModal from '@/components/Live2dViewerModal.vue'
+import { primeLive2D } from '@/utils/live2dPrime'
+const store = useCharacterStore()
+const settingsStore = useSettingsStore()
 
 type ResizeHandle = 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw'
 type CompositeSegment = {
@@ -209,9 +269,42 @@ const backgroundOverlayRef = ref<HTMLDivElement | null>(null)
 const backgroundImageEl = ref<HTMLImageElement | null>(null)
 const overlayCanvas = ref<HTMLCanvasElement | null>(null)
 
+// video assets lookup (eager import as URLs)
+const videoModalVisible = ref(false)
+const live2dViewerVisible = ref(false)
+const videoModules = import.meta.glob('../assets/videos/*.{mp4,webm}', { eager: true, as: 'url' }) as Record<string, string>
+const videoList = Object.entries(videoModules).map(([path, url]) => ({ path, url }))
+const currentVideoUrl = computed(() => {
+  const id = store.selectedCharacterId
+  if (!id) return null
+  const found = videoList.find(v => v.path.includes(id))
+  return found?.url ?? null
+})
+const hasLive2dViewer = computed(() => {
+  const id = store.selectedCharacterId
+  if (!id) return false
+  const selected = store.characters.find(char => char.id === id)
+  if (!selected || !selected.dating) return false
+  const folderName = String(selected.dating).trim()
+  if (!folderName) return false
+  return Object.keys(import.meta.glob('../assets/live2dcubism/**/*', { eager: false, as: 'url' })).some(path => path.includes(`/live2dcubism/${folderName}/`))
+})
+
+// Automatically prime the Live2D runtime when a character with Live2D assets becomes available
+watch(hasLive2dViewer, (available) => {
+  if (available) void primeLive2D()
+})
+
+function onPrimeLive2D() {
+  void primeLive2D()
+}
+
+function openVideoModal() {
+  if (!currentVideoUrl.value) return
+  videoModalVisible.value = true
+}
+
 const progress = ref(0)
-const store = useCharacterStore()
-const settingsStore = useSettingsStore()
 
 const props = defineProps<{ mobileOverlayActive?: boolean; inspectMode?: boolean }>()
 const showingMobileOverlay = computed(() => props.mobileOverlayActive ?? false)
@@ -250,11 +343,14 @@ const pointerStart = { x: 0, y: 0 }
 const initialRect = { x: 0, y: 0, width: 0, height: 0 }
 const MIN_BACKGROUND_SIZE = 60
 const CHARACTER_CLICK_DRAG_THRESHOLD = 6
-const CHARACTER_IDLE_ANIMATION = 'idle'
-const CHARACTER_MOTION_ANIMATION = 'motion'
+const CHARACTER_IDLE_ANIMATION = 'A'
+const CHARACTER_MOTION_ANIMATION = 'A1'
+// const CHARACTER_IDLE_ANIMATION = 'idle'
+// const CHARACTER_MOTION_ANIMATION = 'motion'
 let characterClickCandidate: CharacterClickCandidate | null = null
 let characterAudioPool: CharacterAudioPool | null = null
 let activeCharacterAudio: HTMLAudioElement | null = null
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let nextCharacterAudioIndex = 0
 
 const backgroundReady = computed(() => backgroundImage.initialized && backgroundImage.width > 0 && backgroundImage.height > 0)
@@ -544,7 +640,8 @@ function normalizeCompositeDefinitions(entry: CutsceneCompositeEntry | undefined
 }
 
 function getCompositesForCurrent(): ResolvedCutsceneComposite[] {
-  if (store.animationCategory !== 'ultimate') return []
+  //uncomment below to disable composites for non-ultimate animations
+  //if (store.animationCategory !== 'ultimate') return []
   return normalizeCompositeDefinitions(cutsceneComposites[store.selectedCharacterId])
 }
 
@@ -1028,10 +1125,13 @@ function stopPlayerRenderLoop(p: SpinePlayer | null) {
 
 function startPlayerRenderLoop(p: SpinePlayer | null) {
   if (!p) return
-  const internal = p as unknown as { stopRequestAnimationFrame?: boolean; drawFrame: (requestNextFrame?: boolean) => void }
+  const internal = p as unknown as { stopRequestAnimationFrame?: boolean; drawFrame?: (requestNextFrame?: boolean) => void }
   const wasStopped = internal.stopRequestAnimationFrame === true
   internal.stopRequestAnimationFrame = false
-  internal.drawFrame(wasStopped)
+  // Only call drawFrame if the internal method exists and the player is initialized
+  if (typeof internal.drawFrame === 'function' && p.skeleton && p.sceneRenderer) {
+    internal.drawFrame(wasStopped)
+  }
 }
 
 function getPremultipliedAlpha(p: SpinePlayer | null) {
@@ -1172,6 +1272,7 @@ function renderCompositeOnce() {
   applyLayerVisibility(player.skeleton)
   clearRendererBackground(renderer)
   renderer.begin()
+
   const premultiplied = getPremultipliedAlpha(player)
   renderer.drawSkeleton(player.skeleton, premultiplied)
   overlayInstances.forEach(overlay => {
@@ -1788,6 +1889,59 @@ watch(viewerWrapper, value => {
 watch(activeBackgroundSrc, src => {
   setBackgroundSource(src)
 })
+/*const error = ref<string | null>(null)
+async function load() {
+  const char = store.characters.find(c => c.id === store.selectedCharacterId)
+  if (!char) {
+    error.value = 'No character selected.'
+    return
+  }
+
+  const base = `${getSpineAssetRoot()}/${char.id}/${char.spine}`
+  const binaryUrl = char.customFiles?.skel || `${base}.skel`
+  const jsonUrl = char.customFiles?.json || undefined
+  const atlasUrl = char.customFiles?.atlas || `${base}.atlas`
+
+  try {
+    if (!container.value) throw new Error('Viewer container missing')
+    player = new SpinePlayer(container.value, {
+      showControls: false,
+      ...(jsonUrl ? { jsonUrl } : { binaryUrl }),
+      atlasUrl,
+      preserveDrawingBuffer: true,
+      premultipliedAlpha: false,
+      alpha: true,
+      backgroundColor: store.backgroundColor ?? '#000000',
+      success: (p: any) => {
+        try {
+          p.speed = store.animationSpeed || 1
+          if (store.selectedSkin) {
+            p.skeleton?.setSkinByName(store.selectedSkin)
+            p.skeleton?.setSlotsToSetupPose()
+            p.animationState?.apply(p.skeleton)
+            p.skeleton?.updateWorldTransform()
+          }
+          const names = p.animationState?.data.skeletonData.animations.map((a: any) => a.name) || []
+          // choose a playable animation if none selected
+          if (!store.selectedAnimation && names.length) {
+            store.selectedAnimation = names[0]
+          }
+          if (store.selectedAnimation) {
+            p.animationState?.setAnimation(0, store.selectedAnimation, true)
+          }
+          p.play()
+        } catch (err) {
+          console.error(err)
+          error.value = String(err)
+        }
+      },
+      update: () => {},
+    })
+  } catch (err) {
+    console.error(err)
+    error.value = String(err)
+  }
+}*/
 
 async function load() {
   if (!container.value) return
@@ -1947,7 +2101,7 @@ async function load() {
             void startComposite(p, mapping, 0)
           } else {
             resetComposite()
-            startPlayerRenderLoop(p)
+            //startPlayerRenderLoop(p)
             setSpineAnimation(p, store.selectedAnimation, { loop: true })
           }
           if (store.playing) {
@@ -2080,6 +2234,7 @@ async function load() {
   applyPlayerBackgroundTransparency(player)
   updateCanvasPointerEvents(player)
 }
+
 watch(() => store.selectedCharacterId, () => {
   preloadSelectedCharacterAudio()
   if (recorder && recorder.state === 'recording') {
@@ -2266,7 +2421,8 @@ function isRenderableAttachmentHit(slot: Slot, worldX: number, worldY: number) {
   if (attachment instanceof RegionAttachment) {
     if (attachment.color.a <= 0) return false
     const worldVertices = new Float32Array(8)
-    attachment.computeWorldVertices(slot, worldVertices, 0, 2)
+    attachment.computeWorldVertices(slot.bone, worldVertices, 0, 2)
+    // attachment.computeWorldVertices(slot, worldVertices, 0, 2)
     return isPointInPolygon(worldX, worldY, worldVertices)
   }
 
@@ -2274,6 +2430,8 @@ function isRenderableAttachmentHit(slot: Slot, worldX: number, worldY: number) {
     if (attachment.color.a <= 0 || attachment.worldVerticesLength <= 0) return false
     const worldVertices = new Float32Array(attachment.worldVerticesLength)
     attachment.computeWorldVertices(slot, 0, attachment.worldVerticesLength, worldVertices, 0, 2)
+       // attachment.computeWorldVertices(slot, 0, attachment.worldVerticesLength, worldVertices, 0, 2)
+
 
     for (let i = 0; i + 2 < attachment.triangles.length; i += 3) {
       const a = attachment.triangles[i] * 2
@@ -2375,33 +2533,33 @@ function preloadSelectedCharacterAudio() {
   characterAudioPool = { key: config.key, clips }
 }
 
-function playNextCharacterAudio() {
-  const config = getSelectedCharacterAudioConfig()
-  if (!config) return
-  if (characterAudioPool?.key !== config.key) preloadSelectedCharacterAudio()
+// function playNextCharacterAudio() {
+//   const config = getSelectedCharacterAudioConfig()
+//   if (!config) return
+//   if (characterAudioPool?.key !== config.key) preloadSelectedCharacterAudio()
 
-  const clips = characterAudioPool?.clips
-  if (!clips?.length) return
+//   const clips = characterAudioPool?.clips
+//   if (!clips?.length) return
 
-  stopCharacterAudio()
-  const audio = clips[nextCharacterAudioIndex % clips.length]
-  nextCharacterAudioIndex = (nextCharacterAudioIndex + 1) % clips.length
-  activeCharacterAudio = audio
-  try {
-    audio.currentTime = 0
-  } catch {
-    // play() will begin at the start when metadata has not loaded yet.
-  }
-  void audio.play().catch(() => {
-    if (activeCharacterAudio === audio) activeCharacterAudio = null
-  })
-}
+//   stopCharacterAudio()
+//   const audio = clips[nextCharacterAudioIndex % clips.length]
+//   nextCharacterAudioIndex = (nextCharacterAudioIndex + 1) % clips.length
+//   activeCharacterAudio = audio
+//   try {
+//     audio.currentTime = 0
+//   } catch {
+//     // play() will begin at the start when metadata has not loaded yet.
+//   }
+//   void audio.play().catch(() => {
+//     if (activeCharacterAudio === audio) activeCharacterAudio = null
+//   })
+// }
 
 function canTriggerCharacterMotion() {
   if (
     !player ||
-    store.animationCategory !== 'character' ||
-    store.selectedAnimation !== CHARACTER_IDLE_ANIMATION ||
+    // store.animationCategory !== 'character' ||
+    // store.selectedAnimation !== CHARACTER_IDLE_ANIMATION ||
     !store.playing ||
     store.layerSelectionEnabled ||
     editingBackground.value ||
@@ -2456,6 +2614,32 @@ function onCharacterClickPointerMove(event: PointerEvent) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function playDatingAudio(characterId: string, _animationName: string) {
+  const audioCharacterId = characterId
+  if (!/^\d+(?:_c)?$/i.test(audioCharacterId)) return
+
+  const language = settingsStore.audioLanguage
+  const character = selectedCharacter.value
+  const audioName = character?.audio?.trim()
+  if (!audioName) return
+
+  //const audioUrl = `${getAudioAssetRoot()}/${audioCharacterId}/${language}/${audioName}.wav`
+  const audioUrl = `${getAudioAssetRoot()}/${audioCharacterId}/${language}/${audioName}.wav`
+  const audio = new Audio()
+  audio.preload = 'auto'
+  audio.src = audioUrl
+  activeCharacterAudio = audio
+  try {
+    audio.currentTime = 0
+  } catch {
+    // play() will begin at the start when metadata has not loaded yet.
+  }
+  void audio.play().catch(() => {
+    if (activeCharacterAudio === audio) activeCharacterAudio = null
+  })
+}
+
 function onCharacterClickPointerUp(event: PointerEvent) {
   const candidate = characterClickCandidate
   if (!candidate || event.pointerId !== candidate.pointerId) return
@@ -2466,7 +2650,11 @@ function onCharacterClickPointerUp(event: PointerEvent) {
 
   if (isClick && isSameViewer && canTriggerCharacterMotion() && isCharacterHit(event.clientX, event.clientY)) {
     if (playCharacterMotion()) {
-      playNextCharacterAudio()
+      //playNextCharacterAudio()
+        //rafy: test
+    if (store.animationCategory == 'ultimate'){
+      playDatingAudio(store.selectedCharacterId,store.selectedAnimation)
+    }
       emit('character-interaction')
     }
   }

@@ -18,6 +18,12 @@ export type CutsceneCompositeDefinition = {
 export type CutsceneCompositeEntry = CutsceneComposite | CutsceneCompositeDefinition | CutsceneCompositeDefinition[]
 
 const cutsceneComposites: Record<string, CutsceneCompositeEntry> = {
+    "31114": [
+    {
+      name: "cut_all",
+      composite: ["A", "A1", "A2"]
+    }
+  ],
   "103301": [
     {
       name: "cut_all",

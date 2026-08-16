@@ -2,7 +2,7 @@
 <template>
   <div>
     <nav class="flex items-center justify-between bg-black text-white p-4">
-      <div class="text-xl md:text-3xl font-bold">Brown Dust 2 L2D Viewer</div>
+      <div class="text-xl md:text-3xl font-bold">Girl Wars L2D Viewer</div>
       <div class="hidden md:flex items-center gap-4">
         <button class="cursor-pointer" @click="showUploadModal = true" title="Upload custom Spine model">
           <PlusIcon class="w-5 h-5 md:w-7 md:h-7" />
@@ -64,7 +64,7 @@
         <button class="cursor-pointer" @click="showChangelog = true" title="Changelog">
           <ChangelogIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
-        <a href="https://github.com/Jelosus2/BD2-L2D-Viewer" target="_blank" title="Open GitHub repository">
+        <a href="https://hisyn.github.io/GW-L2D-Viewer" target="_blank" title="Open GitHub repository">
           <GithubIcon class="w-5 h-5 md:w-7 md:h-7" />
         </a>
       </div>
@@ -132,7 +132,7 @@
           <span>Changelog</span>
         </button>
         <a
-          href="https://github.com/Jelosus2/BD2-L2D-Viewer"
+          href="https://hisyn.github.io/GW-L2D-Viewer"
           target="_blank"
           rel="noopener"
           class="flex items-center gap-2"

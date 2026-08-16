@@ -74,8 +74,8 @@
         <span>Animation Category</span>
         <select v-model="store.animationCategory" class="bg-gray-700 text-white w-full">
           <option value="character">Character</option>
-          <option value="ultimate" :disabled="!currentChar?.cutscene">Ultimate</option>
-          <option value="dating" :disabled="!currentChar?.dating">Fated Guest</option>
+          <option value="ultimate" :disabled="!currentChar?.cutscene">Date</option>
+          <!-- <option value="dating" :disabled="!currentChar?.dating">Fated Guest</option> -->
         </select>
       </div>
       <div class="p-2">

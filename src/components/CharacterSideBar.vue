@@ -36,7 +36,7 @@
         <img
           :src="icons[char.icon] || icons['unknown']"
           :alt="char.costumeName"
-          class="w-16 h-16 object-cover rounded-[50%]"
+          class="w-30 h-30 object-cover rounded-[50%] transition-transform duration-200 ease-out hover:scale-125"
         />
         <div class="flex-grow pl-2">
           <span class="text-lg">{{ char.charName + ': ' + char.costumeName }}</span>
@@ -46,14 +46,14 @@
             v-if="char.dating"
             class="w-auto h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded"
           >
-            FG
+            B
           </div>
-          <div
+          <!-- <div
             v-if="char.cutscene"
             class="w-auto h-6 px-2 bg-purple-500 text-white flex items-center justify-center text-xs font-bold rounded"
           >
             U
-          </div>
+          </div> -->
         </div>
       </div>
       <div v-if="!filteredCharacters.length" class="text-sm text-gray-400 px-2 py-3">

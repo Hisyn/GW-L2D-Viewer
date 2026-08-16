@@ -1,6 +1,6 @@
 import { cp, mkdir } from 'node:fs/promises'
 
-const assetDirectories = ['spines', 'audios']
+const assetDirectories = ['spines', 'audios', 'live2dcubism']
 
 await mkdir('dist/assets', { recursive: true })
 await Promise.all(

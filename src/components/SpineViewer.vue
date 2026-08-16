@@ -272,7 +272,7 @@ const overlayCanvas = ref<HTMLCanvasElement | null>(null)
 // video assets lookup (eager import as URLs)
 const videoModalVisible = ref(false)
 const live2dViewerVisible = ref(false)
-const videoModules = import.meta.glob('../assets/videos/*.{mp4,webm}', { eager: true, as: 'url' }) as Record<string, string>
+const videoModules = import.meta.glob('../assets/videos/*.{mp4,webm}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>
 const videoList = Object.entries(videoModules).map(([path, url]) => ({ path, url }))
 const currentVideoUrl = computed(() => {
   const id = store.selectedCharacterId
@@ -287,7 +287,7 @@ const hasLive2dViewer = computed(() => {
   if (!selected || !selected.dating) return false
   const folderName = String(selected.dating).trim()
   if (!folderName) return false
-  return Object.keys(import.meta.glob('../assets/live2dcubism/**/*', { eager: false, as: 'url' })).some(path => path.includes(`/live2dcubism/${folderName}/`))
+  return Object.keys(import.meta.glob('../assets/live2dcubism/**/*', { eager: false, query: '?url', import: 'default' })).some(path => path.includes(`/live2dcubism/${folderName}/`))
 })
 
 // Automatically prime the Live2D runtime when a character with Live2D assets becomes available

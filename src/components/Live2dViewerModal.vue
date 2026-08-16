@@ -126,7 +126,7 @@ const modelInfo = ref<{
   motionNames: string[]
 } | null>(null)
 
-const live2dAssetModules = import.meta.glob('../assets/live2dcubism/**/*.{json,png,jpg,jpeg,webp}', { eager: false, as: 'url' }) as Record<string, () => Promise<string>>
+const live2dAssetModules = import.meta.glob('../assets/live2dcubism/**/*.{json,png,jpg,jpeg,webp}', { eager: false, query: '?url', import: 'default' }) as Record<string, () => Promise<string>>
 let currentApp: PIXI.Application | null = null
 let currentModel: Live2DModelInstance | null = null
 let componentActive = true

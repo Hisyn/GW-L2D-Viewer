@@ -27,6 +27,12 @@
           <div class="grid gap-4 xl:grid-cols-[minmax(0,1.8fr)_340px]">
             <div class="space-y-4">
               <div class="rounded-xl border border-slate-800 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.17),transparent_45%),linear-gradient(180deg,#0a1020,#02060c)] p-4">
+                <div class="mb-3 flex flex-wrap gap-2">
+                  <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="displayAllModel()">Display all</button>
+                  <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="centerModel()">Center it</button>
+                  <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="zoomModel(1.15)">Zoom In</button>
+                  <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="zoomModel(0.85)">Zoom Out</button>
+                </div>
                 <div ref="canvasHost" class="relative mx-auto flex h-[40vh] sm:h-[56vh] lg:h-[64vh] max-h-[74vh] min-h-[230px] sm:min-h-[320px] w-full items-center justify-center overflow-hidden rounded-xl border border-emerald-400/20 bg-slate-950/70">
                   <div v-if="loading" class="absolute inset-0 flex items-center justify-center text-sm text-slate-300">
                     Loading Live2D model...
@@ -129,6 +135,7 @@ const modelInfo = ref<{
 const live2dAssetModules = import.meta.glob('../assets/live2dcubism/**/*.{json,png,jpg,jpeg,webp}', { eager: false, query: '?url', import: 'default' }) as Record<string, () => Promise<string>>
 let currentApp: PIXI.Application | null = null
 let currentModel: Live2DModelInstance | null = null
+let modelScale = 0.52
 let componentActive = true
 let renderSessionId = 0
 const cubismPrimed = ref(false)
@@ -139,10 +146,13 @@ type Live2DModelInstance = {
   y: number
   scale: { set: (x: number, y: number) => void }
   anchor: { set: (x: number, y: number) => void }
-  motion: (name: string) => void
+  motion: (group: string, index?: number, priority?: number) => Promise<boolean>
   on: (event: string, callback: (hitAreas: string[]) => void) => void
   destroy?: () => void
 }
+
+// Mirrors pixi-live2d-display's MotionPriority.FORCE so new motions always interrupt the current one
+const MOTION_PRIORITY_FORCE = 3
 
 const resolvedCharacterName = computed(() => {
   if (props.characterName) return props.characterName
@@ -226,8 +236,39 @@ function playMotion(name: string) {
     }
     return
   }
-  void currentModel.motion(name)
+  void currentModel.motion(name, undefined, MOTION_PRIORITY_FORCE)
   pendingMotion.value = null
+}
+
+function applyModelTransform() {
+  if (!currentModel || !canvasHost.value) {
+    return
+  }
+
+  const host = canvasHost.value
+  currentModel.x = (host.clientWidth || 800) / 2
+  currentModel.y = (host.clientHeight || 480) * 0.62
+  currentModel.scale.set(modelScale, modelScale)
+  currentModel.anchor.set(0.5, 0.6)
+}
+
+function displayAllModel() {
+  if (!currentModel) return
+  modelScale = 0.52
+  applyModelTransform()
+}
+
+function centerModel() {
+  if (!currentModel || !canvasHost.value) return
+  const host = canvasHost.value
+  currentModel.x = (host.clientWidth || 800) / 2
+  currentModel.y = (host.clientHeight || 480) * 0.62
+}
+
+function zoomModel(factor: number) {
+  if (!currentModel) return
+  modelScale = Math.min(2.5, Math.max(0.18, modelScale * factor))
+  applyModelTransform()
 }
 
 function syncLayerList() {
@@ -314,7 +355,10 @@ async function readLive2DAssets(characterId: string | null | undefined) {
 
   const modelEntry = entries.find(([path]) => /\.model3\.json$/i.test(path)) ?? entries.find(([path]) => /\.json$/i.test(path)) ?? null
   const physicsFile = entries.find(([path]) => /physics3\.json$/i.test(path))
-  const motionFiles = entries.filter(([path]) => /motions\//i.test(path) && /\.(json|mtn|motion)$/i.test(path))
+  const motionFiles = entries.filter(([path]) => {
+    const fileName = path.split('/').pop() ?? ''
+    return /motions\//i.test(path) && /\.(json|mtn|motion)$/i.test(path) && !fileName.toLowerCase().includes('_kr')
+  })
   const textureFiles = entries.filter(([path]) => /textures\//i.test(path) && /\.(png|jpg|jpeg|webp)$/i.test(path))
 
   if (!modelEntry) {
@@ -342,6 +386,7 @@ async function readLive2DAssets(characterId: string | null | undefined) {
       if (response.ok) {
         const modelJson = await response.json() as { FileReferences?: { Motions?: Record<string, unknown> } }
         const motionKeys = Object.keys(modelJson?.FileReferences?.Motions ?? {})
+          .filter((name) => !name.toLowerCase().includes('_kr'))
         if (motionKeys.length) {
           parsedMotionNames = motionKeys
         }
@@ -441,10 +486,8 @@ async function renderLive2DModel() {
       }
     })
 
-    currentModel.x = (host.clientWidth || 800) / 2
-    currentModel.y = (host.clientHeight || 480) * 0.62
-    currentModel.scale.set(0.52, 0.52)
-    currentModel.anchor.set(0.5, 0.6)
+    modelScale = 0.52
+    applyModelTransform()
     currentApp.stage.addChild(currentModel as unknown as PIXI.DisplayObject)
     motionNames.value = modelInfo.value.motionNames
     syncLayerList()
@@ -454,7 +497,7 @@ async function renderLive2DModel() {
     }
     // If the user clicked a motion before the model finished initializing, play it now
     if (pendingMotion.value) {
-      void currentModel.motion(pendingMotion.value)
+      void currentModel.motion(pendingMotion.value, undefined, MOTION_PRIORITY_FORCE)
       pendingMotion.value = null
     } else {
       void currentModel.motion(motionNames.value[0] || 'idle')
@@ -508,7 +551,7 @@ watch(() => props.initialMotion, (val) => {
   if (!val) return
   // If model is ready, play immediately; otherwise queue it
   if (currentModel) {
-    void currentModel.motion(val)
+    void currentModel.motion(val, undefined, MOTION_PRIORITY_FORCE)
     pendingMotion.value = null
   } else {
     pendingMotion.value = val

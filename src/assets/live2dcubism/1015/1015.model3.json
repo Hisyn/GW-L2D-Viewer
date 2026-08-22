@@ -1,0 +1,161 @@
+{
+  "Version": 3,
+  "Name": "1015",
+  "FileReferences": {
+    "Moc": "1015.moc3",
+    "Textures": [
+      "textures/texture_00.png",
+      "textures/texture_01.png"
+    ],
+    "Physics": "1015.physics3.json",
+    "Motions": {
+      "bg": [
+        {
+          "File": "motions/bg.motion3.json"
+        }
+      ],
+      "changeIdle": [
+        {
+          "File": "motions/changeIdle.motion3.json"
+        }
+      ],
+      "idle": [
+        {
+          "File": "motions/idle.motion3.json"
+        }
+      ],
+      "idle1": [
+        {
+          "File": "motions/idle1.motion3.json"
+        }
+      ],
+      "idle2": [
+        {
+          "File": "motions/idle2.motion3.json"
+        }
+      ],
+      "idle3": [
+        {
+          "File": "motions/idle3.motion3.json"
+        }
+      ],
+      "in": [
+        {
+          "File": "motions/in.motion3.json"
+        }
+      ],
+      "rodsiwa": [
+        {
+          "File": "motions/rodsiwa.motion3.json"
+        }
+      ],
+      "rodTitui": [
+        {
+          "File": "motions/rodTitui.motion3.json"
+        }
+      ],
+      "rodTuosiwa": [
+        {
+          "File": "motions/rodTuosiwa.motion3.json"
+        }
+      ],
+      "rodXiong_1_1": [
+        {
+          "File": "motions/rodXiong_1_1.motion3.json"
+        }
+      ],
+      "rodXiong_1_2": [
+        {
+          "File": "motions/rodXiong_1_2.motion3.json"
+        }
+      ],
+      "rodXiong_1_3": [
+        {
+          "File": "motions/rodXiong_1_3.motion3.json"
+        }
+      ],
+      "rodXiong_1_4": [
+        {
+          "File": "motions/rodXiong_1_4.motion3.json"
+        }
+      ],
+      "rodXiong_2_1": [
+        {
+          "File": "motions/rodXiong_2_1.motion3.json"
+        }
+      ],
+      "rodXiong_2_2": [
+        {
+          "File": "motions/rodXiong_2_2.motion3.json"
+        }
+      ],
+      "rodXiongdai_0": [
+        {
+          "File": "motions/rodXiongdai_0.motion3.json"
+        }
+      ],
+      "rodXiongdai_1": [
+        {
+          "File": "motions/rodXiongdai_1.motion3.json"
+        }
+      ],
+      "rodXiongdai_2": [
+        {
+          "File": "motions/rodXiongdai_2.motion3.json"
+        }
+      ],
+      "rodXiongdai_3": [
+        {
+          "File": "motions/rodXiongdai_3.motion3.json"
+        }
+      ],
+      "tabFace": [
+        {
+          "File": "motions/tabFace.motion3.json"
+        }
+      ],
+      "tabHead": [
+        {
+          "File": "motions/tabHead.motion3.json"
+        }
+      ],
+      "tabRightLeg": [
+        {
+          "File": "motions/tabRightLeg.motion3.json"
+        }
+      ],
+      "tabXiong": [
+        {
+          "File": "motions/tabXiong.motion3.json"
+        }
+      ]
+    },
+    "Expressions": [
+      {
+        "Name": "epx1",
+        "File": "expressions/epx1.exp3.json"
+      },
+      {
+        "Name": "epx2",
+        "File": "expressions/epx2.exp3.json"
+      }
+    ]
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

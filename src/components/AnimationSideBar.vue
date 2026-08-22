@@ -21,13 +21,13 @@
       </div>
       <template v-if="sidebarTab === 'controls'">
         <div class="hidden lg:flex flex-col gap-2 min-h-0">
-          <span>Skins</span>
+          <!-- <span>Skins</span>
           <select
             v-model="store.selectedSkin"
             class="bg-gray-700 text-white"
           >
             <option v-for="skin in skins" :key="skin" :value="skin">{{ skin }}</option>
-          </select>
+          </select> -->
           <span>Animations</span>
           <div class="overflow-y-auto sidebar-scroll flex-1">
             <div
@@ -205,6 +205,7 @@ import { useCharacterStore } from '@/stores/characterStore'
 import LoadingIcon from '@/components/icons/LoadingIcon.vue';
 
 const props = defineProps<{ animations: string[]; skins: string[]; exporting: boolean; screenshotting: boolean }>()
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { animations, skins, exporting, screenshotting } = toRefs(props)
 
 const store = useCharacterStore()

@@ -57,7 +57,7 @@
             <option v-for="name in animations" :key="name" :value="name">{{ name }}</option>
           </select>
         </div>
-        <div class="absolute top-17 left-4 lg:hidden z-50 flex flex-col items-start gap-2">
+        <!-- <div class="absolute top-17 left-4 lg:hidden z-50 flex flex-col items-start gap-2">
           <button
             v-show="!overlayActive"
             :aria-pressed="inspectMode"
@@ -87,7 +87,7 @@
           >
             <PlusIcon />
           </button>
-        </div>
+        </div> -->
         <SpineViewer
           ref="viewerRef"
           :mobile-overlay-active="overlayActive"
@@ -172,10 +172,10 @@ import CameraResetIcon from '@/components/icons/CameraResetIcon.vue';
 import MenuIcon from '@/components/icons/MenuIcon.vue';
 import PauseIcon from '@/components/icons/PauseIcon.vue';
 import PlayIcon from '@/components/icons/PlayIcon.vue';
-import InspectAnimationIcon from '@/components/icons/InspectAnimationIcon.vue';
-import LayerSelectIcon from '@/components/icons/LayerSelectIcon.vue';
-import MinusIcon from '@/components/icons/MinusIcon.vue';
-import PlusIcon from '@/components/icons/PlusIcon.vue';
+// import InspectAnimationIcon from '@/components/icons/InspectAnimationIcon.vue';
+// import LayerSelectIcon from '@/components/icons/LayerSelectIcon.vue';
+// import MinusIcon from '@/components/icons/MinusIcon.vue';
+// import PlusIcon from '@/components/icons/PlusIcon.vue';
 
 const store = useCharacterStore()
 const settingsStore = useSettingsStore()
@@ -397,13 +397,13 @@ function onResetCamera() {
   viewerRef.value?.resetCamera()
 }
 
-function onZoomIn() {
-  viewerRef.value?.zoomIn()
-}
+// function onZoomIn() {
+//   viewerRef.value?.zoomIn()
+// }
 
-function onZoomOut() {
-  viewerRef.value?.zoomOut()
-}
+// function onZoomOut() {
+//   viewerRef.value?.zoomOut()
+// }
 
 function onScreenshot(value: boolean) {
   if (!viewerRef.value) return

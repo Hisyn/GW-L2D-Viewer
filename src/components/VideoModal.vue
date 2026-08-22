@@ -3,7 +3,7 @@
     <div class="absolute inset-0 bg-black/70" @click="close"></div>
     <div class="relative z-70 max-w-4xl w-full mx-4 bg-gray-900 rounded-md overflow-hidden shadow-lg">
       <div class="flex items-center justify-between gap-3 p-2 border-b border-gray-800">
-        <div class="text-sm text-white">Ultimate Ability Cutscene</div>
+        <div class="text-sm text-white">Animated Ultimate Skill</div>
         <div class="flex items-center gap-2">
           <label class="flex items-center gap-2 text-xs text-gray-200 select-none">
             <input v-model="loopEnabled" type="checkbox" class="h-3.5 w-3.5 accent-indigo-500" />

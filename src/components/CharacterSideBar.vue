@@ -36,7 +36,7 @@
         <img
           :src="icons[char.icon] || icons['unknown']"
           :alt="char.costumeName"
-          class="w-30 h-30 object-cover rounded-[50%] transition-transform duration-200 ease-out hover:scale-125"
+          class="w-30 h-30 object-cover object-top rounded-[50%] transition-transform duration-200 ease-out hover:scale-125"
         />
         <div class="flex-grow pl-2">
           <span class="text-lg">{{ char.charName + ': ' + char.costumeName }}</span>
@@ -89,11 +89,11 @@
             :aria-pressed="showFatedGuestOnly"
             @click="showFatedGuestOnly = !showFatedGuestOnly"
           >
-            <span class="text-sm text-gray-100">Fated Guest animations</span>
-            <span class="h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded">FG</span>
+            <span class="text-sm text-gray-100">Bride Animations</span>
+            <span class="h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded">B</span>
           </button>
 
-          <button
+          <!-- <button
             type="button"
             class="w-full flex items-center justify-between gap-3 rounded border px-3 py-3 text-left transition-colors"
             :class="showUltimateOnly ? 'border-purple-400 bg-purple-500/15' : 'border-gray-700 hover:bg-gray-700/70'"
@@ -102,7 +102,7 @@
           >
             <span class="text-sm text-gray-100">Ultimate animations</span>
             <span class="h-6 px-2 bg-purple-500 text-white flex items-center justify-center text-xs font-bold rounded">U</span>
-          </button>
+          </button> -->
 
           <button
             type="button"

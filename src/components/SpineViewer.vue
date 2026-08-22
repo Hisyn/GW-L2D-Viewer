@@ -2,9 +2,9 @@
   <div class="relative w-full h-full" data-tutorial="character-viewer">
     <div
       ref="toolbarRef"
-      class="absolute left-2 flex flex-col gap-2 pointer-events-auto transition-opacity duration-150"
+      class="absolute left-2 right-2 lg:right-auto flex flex-col gap-2 pointer-events-auto transition-opacity duration-150 z-40"
       :class="[
-        showingMobileOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100 z-40',
+        showingMobileOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100',
         inspectMode ? 'top-2' : 'top-16 lg:top-2',
       ]"
     >
@@ -20,78 +20,84 @@
         <BgEditIcon />
       </button>
       <div
-        class="grid grid-cols-2 items-center gap-2 max-w-[calc(100vw-1rem)] rounded-2xl bg-slate-900/70 p-2 backdrop-blur-sm lg:flex lg:flex-row lg:flex-nowrap lg:max-w-none lg:rounded-none lg:bg-transparent lg:p-0"
+        class="w-full lg:w-auto rounded-2xl bg-slate-900/70 p-2 backdrop-blur-sm"
         :class="{ 'opacity-0 pointer-events-none': showingMobileOverlay }"
       >
-        <button
-          title="Inspect animation"
-          type="button"
-          aria-label="Inspect animation"
-          :aria-pressed="inspectMode"
-          @click="emit('update:inspectMode', !inspectMode)"
-          class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
-          :class="{ 'bg-indigo-600/90 hover:bg-indigo-500': inspectMode }"
-        >
-          <InspectAnimationIcon :active="inspectMode" />
-        </button>
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            title="Inspect animation"
+            type="button"
+            aria-label="Inspect animation"
+            :aria-pressed="inspectMode"
+            @click="emit('update:inspectMode', !inspectMode)"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            :class="{ 'bg-indigo-600/90 hover:bg-indigo-500': inspectMode }"
+          >
+            <InspectAnimationIcon :active="inspectMode" />
+          </button>
 
-        <button
-          title="Layer selection mode"
-          @click="store.layerSelectionEnabled = !store.layerSelectionEnabled"
-          class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
-        >
-          <LayerSelectIcon :active="store.layerSelectionEnabled" />
-        </button>
-        <button
-          title="Zoom out"
-          aria-label="Zoom out"
-          @click="zoomOut"
-          class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
-        >
-          <MinusIcon />
-        </button>
-        <button
-          title="Zoom in"
-          aria-label="Zoom in"
-          @click="zoomIn"
-          class="w-9 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
-        >
-          <PlusIcon />
-        </button>
-        <button
-          type="button"
-          title="Play Ultimate Ability Cutscene"
-          aria-label="Play video"
-          @click="openVideoModal"
-          :disabled="!currentVideoUrl"
-          v-show="currentVideoUrl && !showingMobileOverlay"
-          class="inline-flex w-full lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-colors"
-        >
-          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
-            <svg aria-hidden="true" viewBox="0 0 16 16" class="h-4 w-4 fill-current text-white">
-              <path d="M3 2.5v11l10-5.5-10-5.5Z" />
-            </svg>
-          </span>
-          <span class="leading-none hidden sm:inline">Play Ultimate Ability Cutscene</span>
-          <span class="leading-none sm:hidden">Cutscene</span>
-        </button>
-        <button
-          v-if="hasLive2dViewer"
-          type="button"
-          title="Open Live2D Cubism Viewer"
-          aria-label="Open Live2D Cubism Viewer"
-          @click="live2dViewerVisible = true"
-          @mouseenter.prevent="onPrimeLive2D"
-          @pointerdown.prevent="onPrimeLive2D"
-          v-show="!showingMobileOverlay"
-          class="inline-flex w-full lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors"
-        >
-          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
-            <span class="text-[9px] leading-none font-bold tracking-wide">L2D</span>
-          </span>
-          <span class="leading-none hidden sm:inline">Bride - Live2D</span>
-          <span class="leading-none sm:hidden">Live2D</span>
-        </button>
+          <button
+            title="Layer selection mode"
+            @click="store.layerSelectionEnabled = !store.layerSelectionEnabled"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+          >
+            <LayerSelectIcon :active="store.layerSelectionEnabled" />
+          </button>
+          <button
+            title="Zoom out"
+            aria-label="Zoom out"
+            @click="zoomOut"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+          >
+            <MinusIcon />
+          </button>
+          <button
+            title="Zoom in"
+            aria-label="Zoom in"
+            @click="zoomIn"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+          >
+            <PlusIcon />
+          </button>
+           <button
+            type="button"
+            title="Play Ultimate Ability Cutscene"
+            aria-label="Play video"
+            @click="openVideoModal"
+            :disabled="!currentVideoUrl"
+            v-show="currentVideoUrl && !showingMobileOverlay"
+            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-colors"
+          >
+            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
+              <svg aria-hidden="true" viewBox="0 0 16 16" class="h-4 w-4 fill-current text-white">
+                <path d="M3 2.5v11l10-5.5-10-5.5Z" />
+              </svg>
+            </span>
+            <span class="leading-none hidden sm:inline"> Animated Ultimate Skill</span>
+            <span class="leading-none sm:hidden">Ult</span>
+          </button>
+          <button
+            v-if="hasLive2dViewer"
+            type="button"
+            title="Open Live2D Cubism Viewer"
+            aria-label="Open Live2D Cubism Viewer"
+            @click="live2dViewerVisible = true"
+            @mouseenter.prevent="onPrimeLive2D"
+            @pointerdown.prevent="onPrimeLive2D"
+            v-show="!showingMobileOverlay"
+            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors"
+          >
+            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
+              <span class="text-[9px] leading-none font-bold tracking-wide">L2D</span>
+            </span>
+            <span class="leading-none hidden sm:inline">Bride - Live2D</span>
+            <!-- <span class="leading-none sm:hidden">Bride</span> -->
+          </button>
+        </div>
+
+        <!-- <div class="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+
+        </div> -->
       </div>
     </div>
     <div ref="viewerWrapper" class="relative w-full h-full">
@@ -401,8 +407,8 @@ const editButtonClasses = computed(() => [
   !hasBackgroundImage.value
     ? 'opacity-60 cursor-not-allowed'
     : editingBackground.value
-      ? 'lg:bg-indigo-600/90 lg:hover:bg-indigo-500'
-      : 'lg:bg-gray-800/80 lg:hover:bg-gray-700/80',
+      ? 'bg-indigo-600/90 hover:bg-indigo-500'
+      : 'bg-gray-800/80 hover:bg-gray-700/80',
 ])
 
 let player: SpinePlayer | null = null
@@ -441,8 +447,8 @@ let compositeStartToken = 0
 let exportingAnimation = false
 let compositeLayerNames = new Set<string>()
 
-const glTexturePatchedKey = '__bd2PremultipliedPatchApplied'
-const glTextureOriginalKey = '__bd2PremultipliedPatchOriginal'
+const glTexturePatchedKey = '__gwPremultipliedPatchApplied'
+const glTextureOriginalKey = '__gwPremultipliedPatchOriginal'
 const layerSourceSeparator = ' > '
 type PatchedGLTexturePrototype = typeof GLTexture.prototype & {
   [glTexturePatchedKey]?: boolean

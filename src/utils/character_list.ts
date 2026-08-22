@@ -1,4 +1,205 @@
 export default {
+
+    "1001": {
+    "charName": "Tsurihime",
+    "costumeName": "SR",
+    "spine": "Painting_1001",
+    "cutscene": "100104",
+    "dating": "",
+    "audio": ""
+  },
+    "1002": {
+    "charName": "Chacha",
+    "costumeName": "SR",
+    "spine": "Painting_1002",
+    "cutscene": "100204",
+    "dating": "",
+    "audio": ""
+  },
+    "1003": {
+    "charName": "Lancelot",
+    "costumeName": "SR",
+    "spine": "Painting_1003",
+    "cutscene": "100304",
+    "dating": "",
+    "audio": ""
+  },
+    "1004": {
+    "charName": "Mori Ranmaru",
+    "costumeName": "SR",
+    "spine": "Painting_1004",
+    "cutscene": "100404",
+    "dating": "",
+    "audio": ""
+  },
+    "1005": {
+    "charName": "Nene",
+    "costumeName": "SR",
+    "spine": "Painting_1005",
+    "cutscene": "100504",
+    "dating": "1005",
+    "audio": ""
+  },
+    "1006": {
+    "charName": "Maeda Toshiie",
+    "costumeName": "SR",
+    "spine": "Painting_1006",
+    "cutscene": "100604",
+    "dating": "",
+    "audio": ""
+  },
+    "1007": {
+    "charName": "Maeda Keiji",
+    "costumeName": "SR",
+    "spine": "Painting_1007",
+    "cutscene": "100704",
+    "dating": "",
+    "audio": ""
+  },
+    "1008": {
+    "charName": "Augustus",
+    "costumeName": "SR",
+    "spine": "Painting_1008",
+    "cutscene": "100804",
+    "dating": "1008",
+    "audio": ""
+  },
+    "1009": {
+    "charName": "Sarutobi Sasuke",
+    "costumeName": "SR",
+    "spine": "Painting_1009",
+    "cutscene": "100904",
+    "dating": "",
+    "audio": ""
+  },
+    "1010": {
+    "charName": "Shamiram",
+    "costumeName": "SR",
+    "spine": "Painting_1010",
+    "cutscene": "101004",
+    "dating": "1010",
+    "audio": ""
+  },
+    "1011": {
+    "charName": "Imagawa Yoshimoto",
+    "costumeName": "SR",
+    "spine": "Painting_1011",
+    "cutscene": "101104",
+    "dating": "",
+    "audio": ""
+  },
+    "1012": {
+    "charName": "Sanada Yukimura",
+    "costumeName": "SSR",
+    "spine": "Painting_1012",
+    "cutscene": "101204",
+    "dating": "1012",
+    "audio": ""
+  },
+    "1013": {
+    "charName": "Honda Komatsu",
+    "costumeName": "SR",
+    "spine": "Painting_1013",
+    "cutscene": "101304",
+    "dating": "",
+    "audio": ""
+  },
+    "1014": {
+    "charName": "Naoe Kanetsugu",
+    "costumeName": "SR",
+    "spine": "Painting_1014",
+    "cutscene": "101404",
+    "dating": "",
+    "audio": ""
+  },
+    "1015": {
+    "charName": "Yekaterina",
+    "costumeName": "SSR",
+    "spine": "Painting_1015",
+    "cutscene": "101504",
+    "dating": "1015",
+    "audio": ""
+  },
+    "1016": {
+    "charName": "Oda Nobunaga",
+    "costumeName": "SSR",
+    "spine": "Painting_1016",
+    "cutscene": "101604",
+    "dating": "1016",
+    "audio": ""
+  },
+    "1017": {
+    "charName": "Napoleon",
+    "costumeName": "SSR",
+    "spine": "Painting_1017",
+    "cutscene": "101704",
+    "dating": "",
+    "audio": ""
+  },
+    "1018": {
+    "charName": "Mori Motonari",
+    "costumeName": "SSR",
+    "spine": "Painting_1018",
+    "cutscene": "101804",
+    "dating": "1018",
+    "audio": ""
+  },
+    "1019": {
+    "charName": "Akechi Mitsuhide",
+    "costumeName": "SSR",
+    "spine": "Painting_1019",
+    "cutscene": "101904",
+    "dating": "1019",
+    "audio": ""
+  },
+    "1020": {
+    "charName": "Honda Tadakatsu",
+    "costumeName": "SSR",
+    "spine": "Painting_1020",
+    "cutscene": "102004",
+    "dating": "1020",
+    "audio": ""
+  },
+    "1021": {
+    "charName": "Takeda Shingen",
+    "costumeName": "SSR",
+    "spine": "Painting_1021",
+    "cutscene": "102104",
+    "dating": "1021",
+    "audio": ""
+  },
+    "1022": {
+    "charName": "Uesugi Kenshin",
+    "costumeName": "SSR",
+    "spine": "Painting_1022",
+    "cutscene": "102204",
+    "dating": "1022",
+    "audio": ""
+  },
+    "1023": {
+    "charName": "Tokugawa Ieyasu",
+    "costumeName": "SSR",
+    "spine": "Painting_1023",
+    "cutscene": "102304",
+    "dating": "1023",
+    "audio": ""
+  },
+    "1024": {
+    "charName": "Minamoto no Yoshitsune",
+    "costumeName": "SSR",
+    "spine": "Painting_1024",
+    "cutscene": "102404",
+    "dating": "1024",
+    "audio": ""
+  },
+   "1025": {
+    "charName": "Date Masamune",
+    "costumeName": "SSR",
+    "spine": "Painting_1025",
+    "cutscene": "102504",
+    "dating": "1025",
+    "audio": ""
+  },
     "31114": {
     "charName": "Romulus",
     "costumeName": "UR EX",
@@ -14,22 +215,6 @@ export default {
     "spine": "Painting_31115",
     "cutscene": "3111504",
     "dating": "",
-    "audio": ""
-  },
-    "1005": {
-    "charName": "Nene",
-    "costumeName": "SR",
-    "spine": "Painting_1005",
-    "cutscene": "100504",
-    "dating": "1005",
-    "audio": ""
-  },
-      "1008": {
-    "charName": "Augustus",
-    "costumeName": "SR",
-    "spine": "Painting_1008",
-    "cutscene": "100804",
-    "dating": "1008",
     "audio": ""
   },
 //   "100101": {

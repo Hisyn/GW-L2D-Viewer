@@ -7,7 +7,7 @@ type PersistedSettings = {
   interactionTutorialCompleted: boolean
 }
 
-const SETTINGS_STORAGE_KEY = 'bd2-l2d-viewer-settings'
+const SETTINGS_STORAGE_KEY = 'gw-l2d-viewer-settings'
 const DEFAULT_SETTINGS: PersistedSettings = {
   audioLanguage: 'JP',
   interactionTutorialCompleted: false,

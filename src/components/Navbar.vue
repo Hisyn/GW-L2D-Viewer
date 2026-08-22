@@ -24,7 +24,7 @@
         >
           <BgResetIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
-        <a
+        <!-- <a
           href="https://ko-fi.com/jelosus1"
           target="_blank"
           rel="noopener"
@@ -50,7 +50,7 @@
           title="Support on Patreon"
         >
           <PatreonIcon class="w-5 h-5 md:w-7 md:h-7" />
-        </a>
+        </a> -->
         <button
           type="button"
           data-tutorial="settings-button"

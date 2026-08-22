@@ -1,17 +1,15 @@
-# Brown Dust 2 L2D Viewer
+# Girl Wars L2D Viewer
 
-Website to check the animations of the characters from the gacha game Brown Dust 2.<br/>
+Website to check the animations of the characters from the gacha game Girl Wars.<br/>
 If you want to request a feature or report a bug you can open an issue.
 
-## Donations
-
-If you like the work and effort I put into the website and want to help me consider [supporting](https://ko-fi.com/jelosus1).
 
 ## License
 
 MIT License
 
 Copyright (c) 2025 Jelosus2
+Copyright (c) 2026 Hisyn
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

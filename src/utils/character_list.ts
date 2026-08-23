@@ -648,6 +648,150 @@ export default {
     "dating": "1049",
     "audio": ""
   },
+    "21070": {
+    "charName": "Charlemagne",
+    "costumeName": "UR",
+    "spine": "Painting_21070",
+    "cutscene": "2107004",
+    "dating": "21070",
+    "audio": ""
+  },
+    "21072": {
+    "charName": "Chosokabe Motochika",
+    "costumeName": "UR",
+    "spine": "Painting_21072",
+    "cutscene": "2107204",
+    "dating": "21072",
+    "audio": ""
+  },
+    "21073": {
+    "charName": "Abe no Seimei",
+    "costumeName": "UR",
+    "spine": "Painting_21073",
+    "cutscene": "2107304",
+    "dating": "21073",
+    "audio": ""
+  },
+    "21074": {
+    "charName": "Attila",
+    "costumeName": "UR",
+    "spine": "Painting_21074",
+    "cutscene": "2107404",
+    "dating": "21074",
+    "audio": ""
+  },
+    "21075": {
+    "charName": "Yuki Onna",
+    "costumeName": "UR",
+    "spine": "Painting_21075",
+    "cutscene": "2107504",
+    "dating": "21075",
+    "audio": ""
+  },
+    "21076": {
+    "charName": "Brynhildr",
+    "costumeName": "UR",
+    "spine": "Painting_21076",
+    "cutscene": "2107604",
+    "dating": "21076",
+    "audio": ""
+  },
+    "21077": {
+    "charName": "Solomon",
+    "costumeName": "UR",
+    "spine": "Painting_21077",
+    "cutscene": "2107704",
+    "dating": "21077",
+    "audio": ""
+  },
+    "21078": {
+    "charName": "Tomoe Gozen",
+    "costumeName": "UR",
+    "spine": "Painting_21078",
+    "cutscene": "2107804",
+    "dating": "21078",
+    "audio": ""
+  },
+    "21079": {
+    "charName": "Gawain",
+    "costumeName": "UR",
+    "spine": "Painting_21079",
+    "cutscene": "2107904",
+    "dating": "21079",
+    "audio": ""
+  },
+    "21080": {
+    "charName": "Ma Chao",
+    "costumeName": "UR",
+    "spine": "Painting_21080",
+    "cutscene": "2108004",
+    "dating": "21080",
+    "audio": ""
+  },
+    "21081": {
+    "charName": "Astolfo",
+    "costumeName": "UR",
+    "spine": "Painting_21081",
+    "cutscene": "2108104",
+    "dating": "21081",
+    "audio": ""
+  },
+    "21082": {
+    "charName": "Liu Bei",
+    "costumeName": "UR",
+    "spine": "Painting_21082",
+    "cutscene": "2108204",
+    "dating": "21082",
+    "audio": ""
+  },
+    "21083": {
+    "charName": "Cu Chulainn",
+    "costumeName": "UR",
+    "spine": "Painting_21083",
+    "cutscene": "2108304",
+    "dating": "21083",
+    "audio": ""
+  },
+    "21084": {
+    "charName": "Himiko",
+    "costumeName": "UR",
+    "spine": "Painting_21084",
+    "cutscene": "2108404",
+    "dating": "21084",
+    "audio": ""
+  },
+    "21085": {
+    "charName": "Heracles",
+    "costumeName": "UR",
+    "spine": "Painting_21085",
+    "cutscene": "2108504",
+    "dating": "21085",
+    "audio": ""
+  },
+    "21086": {
+    "charName": "Mephisto",
+    "costumeName": "UR",
+    "spine": "Painting_21086",
+    "cutscene": "2108604",
+    "dating": "21086",
+    "audio": ""
+  },
+    "21087": {
+    "charName": "Nero Claudius",
+    "costumeName": "UR",
+    "spine": "Painting_21087",
+    "cutscene": "2108704",
+    "dating": "21087",
+    "audio": ""
+  },
+    "21088": {
+    "charName": "Gilgamesh",
+    "costumeName": "UR",
+    "spine": "Painting_21088",
+    "cutscene": "2108804",
+    "dating": "21088",
+    "audio": ""
+  },
     "31114": {
     "charName": "Romulus",
     "costumeName": "UR EX",

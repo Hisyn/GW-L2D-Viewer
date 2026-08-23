@@ -792,8 +792,200 @@ export default {
     "dating": "21088",
     "audio": ""
   },
-    "31114": {
+    "21089": {
+    "charName": "Sakata Kintoki",
+    "costumeName": "UR",
+    "spine": "Painting_21089",
+    "cutscene": "2108904",
+    "dating": "21089",
+    "audio": ""
+  },
+    "21090": {
+    "charName": "Huang Zhong",
+    "costumeName": "UR",
+    "spine": "Painting_21090",
+    "cutscene": "2109004",
+    "dating": "21090",
+    "audio": ""
+  },
+    "21101": {
+    "charName": "Achilles",
+    "costumeName": "UR",
+    "spine": "Painting_21101",
+    "cutscene": "2110104",
+    "dating": "21101",
+    "audio": ""
+  },
+    "21104": {
+    "charName": "Li Bai",
+    "costumeName": "UR",
+    "spine": "Painting_21104",
+    "cutscene": "2110404",
+    "dating": "21104",
+    "audio": ""
+  },
+    "31012": {
+    "charName": "Sanada Yukimura",
+    "costumeName": "UR EX",
+    "spine": "Painting_31012",
+    "cutscene": "3101204",
+    "dating": "1012",
+    "audio": ""
+  },
+    "31015": {
+    "charName": "Yekaterina",
+    "costumeName": "UR EX",
+    "spine": "Painting_31015",
+    "cutscene": "3101504",
+    "dating": "1015",
+    "audio": ""
+  },
+    "31025": {
+    "charName": "Date Masamune",
+    "costumeName": "UR EX",
+    "spine": "Painting_31025",
+    "cutscene": "3102504",
+    "dating": "1025",
+    "audio": ""
+  },
+    "31041": {
+    "charName": "Zhao Zilong",
+    "costumeName": "UR EX",
+    "spine": "Painting_31041",
+    "cutscene": "3104104",
+    "dating": "1041",
+    "audio": ""
+  },
+    "31044": {
+    "charName": "Caesar",
+    "costumeName": "UR EX",
+    "spine": "Painting_31044",
+    "cutscene": "3104404",
+    "dating": "1044",
+    "audio": ""
+  },
+    "31070": {
+    "charName": "Charlemagne",
+    "costumeName": "UR EX",
+    "spine": "Painting_31070",
+    "cutscene": "3107004",
+    "dating": "21070",
+    "audio": ""
+  },
+    "31072": {
+    "charName": "Chosokabe Motochika",
+    "costumeName": "UR EX",
+    "spine": "Painting_31072",
+    "cutscene": "3107204",
+    "dating": "21072",
+    "audio": ""
+  },
+    "31073": {
+    "charName": "Abe no Seimei",
+    "costumeName": "UR EX",
+    "spine": "Painting_31073",
+    "cutscene": "3107304",
+    "dating": "21073",
+    "audio": ""
+  },
+    "31077": {
+    "charName": "Solomon",
+    "costumeName": "UR EX",
+    "spine": "Painting_31077",
+    "cutscene": "3107704",
+    "dating": "21077",
+    "audio": ""
+  },
+    "31079": {
+    "charName": "Gawain",
+    "costumeName": "UR EX",
+    "spine": "Painting_31079",
+    "cutscene": "3107904",
+    "dating": "21079",
+    "audio": ""
+  },
+    "31103": {
+    "charName": "Tamamo no Mae",
+    "costumeName": "UR EX",
+    "spine": "Painting_31103",
+    "cutscene": "3110304",
+    "dating": "31103",
+    "audio": ""
+  },
+    "31105": {
+    "charName": "Kamiizumi Nobutsuna",
+    "costumeName": "UR EX",
+    "spine": "Painting_31105",
+    "cutscene": "3110504",
+    "dating": "31105",
+    "audio": ""
+  },
+     "31106": {
+    "charName": "Perseus",
+    "costumeName": "UR EX",
+    "spine": "Painting_31106",
+    "cutscene": "3110604",
+    "dating": "31106",
+    "audio": ""
+  },
+    "31107": {
+    "charName": "Dante",
+    "costumeName": "UR EX",
+    "spine": "Painting_31107",
+    "cutscene": "3110704",
+    "dating": "",
+    "audio": ""
+  },
+    "31108": {
+    "charName": "Leonardo da Vinci",
+    "costumeName": "UR EX",
+    "spine": "Painting_31108",
+    "cutscene": "3110804",
+    "dating": "31108",
+    "audio": ""
+  },
+    "31109": {
+    "charName": "Orion",
+    "costumeName": "UR EX",
+    "spine": "Painting_31109",
+    "cutscene": "3110904",
+    "dating": "31109",
+    "audio": ""
+  },
+    "31110": {
+    "charName": "Yao Bikuni",
+    "costumeName": "UR EX",
+    "spine": "Painting_31110",
+    "cutscene": "3111004",
+    "dating": "31110",
+    "audio": ""
+  },
+    "31111": {
+    "charName": "Xiang Yu",
+    "costumeName": "UR EX",
+    "spine": "Painting_31111",
+    "cutscene": "3111104",
+    "dating": "",
+    "audio": ""
+  },
+    "31112": {
+    "charName": "Ashiya Doman",
+    "costumeName": "UR EX",
+    "spine": "Painting_31112",
+    "cutscene": "3111204",
+    "dating": "",
+    "audio": ""
+  },
+    "31113": {
     "charName": "Romulus",
+    "costumeName": "UR EX",
+    "spine": "Painting_31113",
+    "cutscene": "3111304",
+    "dating": "",
+    "audio": ""
+  },
+    "31114": {
+    "charName": "Scathach",
     "costumeName": "UR EX",
     "spine": "Painting_31114",
     "cutscene": "3111404",

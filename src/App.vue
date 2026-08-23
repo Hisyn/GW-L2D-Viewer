@@ -42,13 +42,17 @@
             <PauseIcon v-if="store.playing" />
             <PlayIcon v-else />
           </button>
-          <select
+          <!-- <select
             v-show="!overlayActive"
             v-model="store.selectedSkin"
             class="bg-gray-700 text-white"
           >
             <option v-for="skin in skins" :key="skin" :value="skin">{{ skin }}</option>
-          </select>
+          </select> -->
+          <span
+          v-show="!overlayActive"
+          >Animation:
+          </span>
           <select
             v-show="!overlayActive"
             v-model="store.selectedAnimation"

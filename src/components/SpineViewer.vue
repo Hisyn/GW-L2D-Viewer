@@ -74,7 +74,7 @@
               </svg>
             </span>
             <span class="leading-none hidden sm:inline"> Animated Ultimate Skill</span>
-            <span class="leading-none sm:hidden">Ult</span>
+            <span class="leading-none sm:hidden">Ultimate</span>
           </button>
           <button
             v-if="hasLive2dViewer"

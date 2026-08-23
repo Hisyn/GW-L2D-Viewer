@@ -1,0 +1,167 @@
+{
+  "Version": 3,
+  "Name": "1029_ext_prefab",
+  "FileReferences": {
+    "Moc": "1029_ext_prefab.moc3",
+    "Textures": [
+      "textures/texture_00.png",
+      "textures/texture_01.png"
+    ],
+    "Physics": "1029_ext_prefab.physics3.json",
+    "Motions": {
+      "bg": [
+        {
+          "File": "motions/bg.motion3.json"
+        }
+      ],
+      "changeIdle": [
+        {
+          "File": "motions/changeIdle.motion3.json"
+        }
+      ],
+      "idle": [
+        {
+          "File": "motions/idle.motion3.json"
+        }
+      ],
+      "idle_01": [
+        {
+          "File": "motions/idle_01.motion3.json"
+        }
+      ],
+      "idle_02": [
+        {
+          "File": "motions/idle_02.motion3.json"
+        }
+      ],
+      "idle_03": [
+        {
+          "File": "motions/idle_03.motion3.json"
+        }
+      ],
+      "idle2": [
+        {
+          "File": "motions/idle2.motion3.json"
+        }
+      ],
+      "idle3": [
+        {
+          "File": "motions/idle3.motion3.json"
+        }
+      ],
+      "in": [
+        {
+          "File": "motions/in.motion3.json"
+        }
+      ],
+      "liushaman": [
+        {
+          "File": "motions/liushaman.motion3.json"
+        }
+      ],
+      "pangxie": [
+        {
+          "File": "motions/pangxie.motion3.json"
+        }
+      ],
+      "rodSiwa": [
+        {
+          "File": "motions/rodSiwa.motion3.json"
+        }
+      ],
+      "rodXigai1": [
+        {
+          "File": "motions/rodXigai1.motion3.json"
+        }
+      ],
+      "rodXigai2": [
+        {
+          "File": "motions/rodXigai2.motion3.json"
+        }
+      ],
+      "rodXigaiman1": [
+        {
+          "File": "motions/rodXigaiman1.motion3.json"
+        }
+      ],
+      "rodXigaiman2": [
+        {
+          "File": "motions/rodXigaiman2.motion3.json"
+        }
+      ],
+      "tapHand1": [
+        {
+          "File": "motions/tapHand1.motion3.json"
+        }
+      ],
+      "tapHand2": [
+        {
+          "File": "motions/tapHand2.motion3.json"
+        }
+      ],
+      "tapLeg1": [
+        {
+          "File": "motions/tapLeg1.motion3.json"
+        }
+      ],
+      "tapLeg2": [
+        {
+          "File": "motions/tapLeg2.motion3.json"
+        }
+      ],
+      "tapQiqiu1": [
+        {
+          "File": "motions/tapQiqiu1.motion3.json"
+        }
+      ],
+      "tapQiqiu2_1": [
+        {
+          "File": "motions/tapQiqiu2_1.motion3.json"
+        }
+      ],
+      "tapQiqiu2_2": [
+        {
+          "File": "motions/tapQiqiu2_2.motion3.json"
+        }
+      ],
+      "tapTou1": [
+        {
+          "File": "motions/tapTou1.motion3.json"
+        }
+      ],
+      "tapTou2": [
+        {
+          "File": "motions/tapTou2.motion3.json"
+        }
+      ],
+      "tapXiong1": [
+        {
+          "File": "motions/tapXiong1.motion3.json"
+        }
+      ],
+      "tapXiong2": [
+        {
+          "File": "motions/tapXiong2.motion3.json"
+        }
+      ]
+    },
+    "Expressions": []
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeROpen",
+        "ParamEyeLOpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

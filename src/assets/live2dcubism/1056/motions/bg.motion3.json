@@ -1,0 +1,179 @@
+{
+  "Version": 3,
+  "Meta": {
+    "Duration": 12.0,
+    "Fps": 30.0,
+    "Loop": true,
+    "AreBeziersRestricted": true,
+    "CurveCount": 8,
+    "TotalSegmentCount": 28,
+    "TotalPointCount": 34,
+    "UserDataCount": 1,
+    "TotalUserDataSize": 0
+  },
+  "Curves": [
+    {
+      "Target": "Parameter",
+      "Id": "Param109",
+      "Segments": [
+        0,
+        30,
+        0,
+        4.167,
+        0,
+        2,
+        5.067,
+        0,
+        0,
+        9.167,
+        30,
+        2,
+        12,
+        30
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param108",
+      "Segments": [
+        0,
+        0,
+        2,
+        3.9,
+        0,
+        1,
+        5.656,
+        0,
+        7.411,
+        15.455,
+        9.167,
+        30,
+        2,
+        12,
+        30
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param111",
+      "Segments": [
+        0,
+        30,
+        2,
+        2.267,
+        30,
+        0,
+        5.367,
+        0,
+        2,
+        6.533,
+        0,
+        0,
+        10.333,
+        30,
+        2,
+        12,
+        30
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param110",
+      "Segments": [
+        0,
+        0,
+        2,
+        5,
+        0,
+        0,
+        10.467,
+        30,
+        2,
+        12,
+        30
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param112",
+      "Segments": [
+        0,
+        0,
+        0,
+        6.767,
+        30,
+        2,
+        6.833,
+        0,
+        2,
+        12,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param113",
+      "Segments": [
+        0,
+        0,
+        0,
+        9.9,
+        30,
+        2,
+        9.933,
+        0,
+        2,
+        12,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param114",
+      "Segments": [
+        0,
+        0,
+        2,
+        3.267,
+        0,
+        0,
+        11.933,
+        30,
+        2,
+        12,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param115",
+      "Segments": [
+        0,
+        15.38,
+        1,
+        1.944,
+        20.253,
+        3.889,
+        25.127,
+        5.833,
+        30,
+        2,
+        5.867,
+        0,
+        1,
+        7.911,
+        5.127,
+        9.956,
+        10.253,
+        12,
+        15.38
+      ]
+    }
+  ],
+  "UserData": [
+    {
+      "Time": 0.0,
+      "Value": ""
+    }
+  ]
+}

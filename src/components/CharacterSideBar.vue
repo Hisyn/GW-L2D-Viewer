@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:w-80 h-full bg-gray-800 text-white flex flex-col min-h-0">
+  <div class="w-full lg:w-full h-full bg-gray-800 text-white flex flex-col min-h-0">
     <div class="flex items-center gap-2 mb-2">
       <input
         v-model="filter"

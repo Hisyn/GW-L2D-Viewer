@@ -338,8 +338,11 @@ function close() {
 
 function resolveAssetFolder(characterId: string | null | undefined) {
   if (!characterId) return null
-  const folderName = String(characterId).trim()
+
+  const selectedCharacter = characterList[characterId]
+  const folderName = String(selectedCharacter?.dating ?? '').trim()
   if (!folderName) return null
+
   const matchingAssets = Object.keys(live2dAssetModules).filter(path => path.includes(`/live2dcubism/${folderName}/`))
   return matchingAssets.length ? folderName : null
 }

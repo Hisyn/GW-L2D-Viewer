@@ -1,0 +1,144 @@
+{
+  "Version": 3,
+  "Meta": {
+    "Duration": 2.0,
+    "Fps": 30.0,
+    "Loop": true,
+    "AreBeziersRestricted": true,
+    "CurveCount": 5,
+    "TotalSegmentCount": 23,
+    "TotalPointCount": 31,
+    "UserDataCount": 1,
+    "TotalUserDataSize": 0
+  },
+  "Curves": [
+    {
+      "Target": "Parameter",
+      "Id": "Param",
+      "Segments": [
+        0,
+        0,
+        0,
+        0.167,
+        -2,
+        0,
+        0.333,
+        0,
+        0,
+        0.5,
+        -2,
+        0,
+        0.667,
+        0,
+        0,
+        0.833,
+        -2,
+        0,
+        1,
+        0,
+        0,
+        1.167,
+        -2,
+        0,
+        1.333,
+        0,
+        0,
+        1.5,
+        -2,
+        0,
+        1.667,
+        0,
+        0,
+        1.833,
+        -2,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param16",
+      "Segments": [
+        0,
+        0,
+        0,
+        1,
+        19,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param31",
+      "Segments": [
+        0,
+        5.791,
+        1,
+        0.211,
+        13.648,
+        0.422,
+        19,
+        0.633,
+        19,
+        0,
+        1.633,
+        0,
+        1,
+        1.755,
+        0,
+        1.878,
+        1.242,
+        2,
+        5.791
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param32",
+      "Segments": [
+        0,
+        18,
+        0,
+        1,
+        0,
+        0,
+        2,
+        18
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "Param33",
+      "Segments": [
+        0,
+        9.5,
+        1,
+        0.167,
+        3.167,
+        0.333,
+        0,
+        0.5,
+        0,
+        0,
+        1.5,
+        19,
+        1,
+        1.667,
+        19,
+        1.833,
+        15.833,
+        2,
+        9.5
+      ]
+    }
+  ],
+  "UserData": [
+    {
+      "Time": 0.0,
+      "Value": ""
+    }
+  ]
+}

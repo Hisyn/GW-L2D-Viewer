@@ -1,0 +1,482 @@
+{
+  "Version": 3,
+  "Name": "1061_ext_prefab",
+  "FileReferences": {
+    "Moc": "1061_ext_prefab.moc3",
+    "Textures": [
+      "textures/texture_00.png",
+      "textures/texture_01.png"
+    ],
+    "Physics": "1061_ext_prefab.physics3.json",
+    "Motions": {
+      "bg": [
+        {
+          "File": "motions/bg.motion3.json"
+        }
+      ],
+      "changeIdle": [
+        {
+          "File": "motions/changeIdle.motion3.json"
+        }
+      ],
+      "changeIdle_kr": [
+        {
+          "File": "motions/changeIdle_kr.motion3.json"
+        }
+      ],
+      "idle": [
+        {
+          "File": "motions/idle.motion3.json"
+        }
+      ],
+      "idle_01": [
+        {
+          "File": "motions/idle_01.motion3.json"
+        }
+      ],
+      "idle_01_kr": [
+        {
+          "File": "motions/idle_01_kr.motion3.json"
+        }
+      ],
+      "idle_02": [
+        {
+          "File": "motions/idle_02.motion3.json"
+        }
+      ],
+      "idle_02_kr": [
+        {
+          "File": "motions/idle_02_kr.motion3.json"
+        }
+      ],
+      "idle_03": [
+        {
+          "File": "motions/idle_03.motion3.json"
+        }
+      ],
+      "idle_03_kr": [
+        {
+          "File": "motions/idle_03_kr.motion3.json"
+        }
+      ],
+      "idle1": [
+        {
+          "File": "motions/idle1.motion3.json"
+        }
+      ],
+      "idle2": [
+        {
+          "File": "motions/idle2.motion3.json"
+        }
+      ],
+      "idle2_kr": [
+        {
+          "File": "motions/idle2_kr.motion3.json"
+        }
+      ],
+      "idle3": [
+        {
+          "File": "motions/idle3.motion3.json"
+        }
+      ],
+      "idle4": [
+        {
+          "File": "motions/idle4.motion3.json"
+        }
+      ],
+      "in": [
+        {
+          "File": "motions/in.motion3.json"
+        }
+      ],
+      "in_kr": [
+        {
+          "File": "motions/in_kr.motion3.json"
+        }
+      ],
+      "rodFoot": [
+        {
+          "File": "motions/rodFoot.motion3.json"
+        }
+      ],
+      "rodFoot_kr": [
+        {
+          "File": "motions/rodFoot_kr.motion3.json"
+        }
+      ],
+      "rodNeiku": [
+        {
+          "File": "motions/rodNeiku.motion3.json"
+        }
+      ],
+      "rodNeiku_kr": [
+        {
+          "File": "motions/rodNeiku_kr.motion3.json"
+        }
+      ],
+      "rodPigu1": [
+        {
+          "File": "motions/rodPigu1.motion3.json"
+        }
+      ],
+      "rodPigu1_kr": [
+        {
+          "File": "motions/rodPigu1_kr.motion3.json"
+        }
+      ],
+      "rodPigu2": [
+        {
+          "File": "motions/rodPigu2.motion3.json"
+        }
+      ],
+      "rodPigu2_kr": [
+        {
+          "File": "motions/rodPigu2_kr.motion3.json"
+        }
+      ],
+      "rodPigu3": [
+        {
+          "File": "motions/rodPigu3.motion3.json"
+        }
+      ],
+      "rodPigu3_kr": [
+        {
+          "File": "motions/rodPigu3_kr.motion3.json"
+        }
+      ],
+      "rodSiwa": [
+        {
+          "File": "motions/rodSiwa.motion3.json"
+        }
+      ],
+      "rodSiwa_kr": [
+        {
+          "File": "motions/rodSiwa_kr.motion3.json"
+        }
+      ],
+      "rodXiezi1": [
+        {
+          "File": "motions/rodXiezi1.motion3.json"
+        }
+      ],
+      "rodXiezi1_kr": [
+        {
+          "File": "motions/rodXiezi1_kr.motion3.json"
+        }
+      ],
+      "rodXiezi2": [
+        {
+          "File": "motions/rodXiezi2.motion3.json"
+        }
+      ],
+      "rodXiezi2_kr": [
+        {
+          "File": "motions/rodXiezi2_kr.motion3.json"
+        }
+      ],
+      "rodYifu1_1": [
+        {
+          "File": "motions/rodYifu1_1.motion3.json"
+        }
+      ],
+      "rodYifu1_2": [
+        {
+          "File": "motions/rodYifu1_2.motion3.json"
+        }
+      ],
+      "rodYifu2_1": [
+        {
+          "File": "motions/rodYifu2_1.motion3.json"
+        }
+      ],
+      "rodYifu2_2": [
+        {
+          "File": "motions/rodYifu2_2.motion3.json"
+        }
+      ],
+      "rodYifu3": [
+        {
+          "File": "motions/rodYifu3.motion3.json"
+        }
+      ],
+      "rodYifu3_kr": [
+        {
+          "File": "motions/rodYifu3_kr.motion3.json"
+        }
+      ],
+      "tapHand": [
+        {
+          "File": "motions/tapHand.motion3.json"
+        }
+      ],
+      "tapHand_kr": [
+        {
+          "File": "motions/tapHand_kr.motion3.json"
+        }
+      ],
+      "tapHead1": [
+        {
+          "File": "motions/tapHead1.motion3.json"
+        }
+      ],
+      "tapHead1_kr": [
+        {
+          "File": "motions/tapHead1_kr.motion3.json"
+        }
+      ],
+      "tapHead2": [
+        {
+          "File": "motions/tapHead2.motion3.json"
+        }
+      ],
+      "tapHead2_kr": [
+        {
+          "File": "motions/tapHead2_kr.motion3.json"
+        }
+      ],
+      "tapHead3": [
+        {
+          "File": "motions/tapHead3.motion3.json"
+        }
+      ],
+      "tapHead3_kr": [
+        {
+          "File": "motions/tapHead3_kr.motion3.json"
+        }
+      ],
+      "tapKele1": [
+        {
+          "File": "motions/tapKele1.motion3.json"
+        }
+      ],
+      "tapKele1_kr": [
+        {
+          "File": "motions/tapKele1_kr.motion3.json"
+        }
+      ],
+      "tapKele2": [
+        {
+          "File": "motions/tapKele2.motion3.json"
+        }
+      ],
+      "tapKele3": [
+        {
+          "File": "motions/tapKele3.motion3.json"
+        }
+      ],
+      "tapKele4": [
+        {
+          "File": "motions/tapKele4.motion3.json"
+        }
+      ],
+      "tapKele5": [
+        {
+          "File": "motions/tapKele5.motion3.json"
+        }
+      ],
+      "tapKele6": [
+        {
+          "File": "motions/tapKele6.motion3.json"
+        }
+      ],
+      "tapKele7": [
+        {
+          "File": "motions/tapKele7.motion3.json"
+        }
+      ],
+      "tapKele7_kr": [
+        {
+          "File": "motions/tapKele7_kr.motion3.json"
+        }
+      ],
+      "tapKele8": [
+        {
+          "File": "motions/tapKele8.motion3.json"
+        }
+      ],
+      "tapKele9": [
+        {
+          "File": "motions/tapKele9.motion3.json"
+        }
+      ],
+      "tapMusic": [
+        {
+          "File": "motions/tapMusic.motion3.json"
+        }
+      ],
+      "tapMusic_kr": [
+        {
+          "File": "motions/tapMusic_kr.motion3.json"
+        }
+      ],
+      "tapPigu1": [
+        {
+          "File": "motions/tapPigu1.motion3.json"
+        }
+      ],
+      "tapPigu1_kr": [
+        {
+          "File": "motions/tapPigu1_kr.motion3.json"
+        }
+      ],
+      "tapPigu2": [
+        {
+          "File": "motions/tapPigu2.motion3.json"
+        }
+      ],
+      "tapPigu2_kr": [
+        {
+          "File": "motions/tapPigu2_kr.motion3.json"
+        }
+      ],
+      "tapPigu3": [
+        {
+          "File": "motions/tapPigu3.motion3.json"
+        }
+      ],
+      "tapPigu3_kr": [
+        {
+          "File": "motions/tapPigu3_kr.motion3.json"
+        }
+      ],
+      "tapPigu4_1": [
+        {
+          "File": "motions/tapPigu4_1.motion3.json"
+        }
+      ],
+      "tapPigu4_1_kr": [
+        {
+          "File": "motions/tapPigu4_1_kr.motion3.json"
+        }
+      ],
+      "tapPigu4_2": [
+        {
+          "File": "motions/tapPigu4_2.motion3.json"
+        }
+      ],
+      "tapPigu4_3": [
+        {
+          "File": "motions/tapPigu4_3.motion3.json"
+        }
+      ],
+      "tapPigu4_3_kr": [
+        {
+          "File": "motions/tapPigu4_3_kr.motion3.json"
+        }
+      ],
+      "tapRabbit1_1": [
+        {
+          "File": "motions/tapRabbit1_1.motion3.json"
+        }
+      ],
+      "tapRabbit1_1_kr": [
+        {
+          "File": "motions/tapRabbit1_1_kr.motion3.json"
+        }
+      ],
+      "tapRabbit1_2": [
+        {
+          "File": "motions/tapRabbit1_2.motion3.json"
+        }
+      ],
+      "tapRabbit1_2_kr": [
+        {
+          "File": "motions/tapRabbit1_2_kr.motion3.json"
+        }
+      ],
+      "tapRabbit2_1": [
+        {
+          "File": "motions/tapRabbit2_1.motion3.json"
+        }
+      ],
+      "tapRabbit2_1_kr": [
+        {
+          "File": "motions/tapRabbit2_1_kr.motion3.json"
+        }
+      ],
+      "tapRabbit2_2": [
+        {
+          "File": "motions/tapRabbit2_2.motion3.json"
+        }
+      ],
+      "tapRabbit2_2_kr": [
+        {
+          "File": "motions/tapRabbit2_2_kr.motion3.json"
+        }
+      ],
+      "tapXiong1": [
+        {
+          "File": "motions/tapXiong1.motion3.json"
+        }
+      ],
+      "tapXiong1_kr": [
+        {
+          "File": "motions/tapXiong1_kr.motion3.json"
+        }
+      ],
+      "tapXiong2": [
+        {
+          "File": "motions/tapXiong2.motion3.json"
+        }
+      ],
+      "tapXiong2_kr": [
+        {
+          "File": "motions/tapXiong2_kr.motion3.json"
+        }
+      ],
+      "tapXiong3": [
+        {
+          "File": "motions/tapXiong3.motion3.json"
+        }
+      ],
+      "tapXiong3_kr": [
+        {
+          "File": "motions/tapXiong3_kr.motion3.json"
+        }
+      ],
+      "tapXiong4_1": [
+        {
+          "File": "motions/tapXiong4_1.motion3.json"
+        }
+      ],
+      "tapXiong4_1_kr": [
+        {
+          "File": "motions/tapXiong4_1_kr.motion3.json"
+        }
+      ],
+      "tapXiong4_2": [
+        {
+          "File": "motions/tapXiong4_2.motion3.json"
+        }
+      ],
+      "tapXiong4_3": [
+        {
+          "File": "motions/tapXiong4_3.motion3.json"
+        }
+      ],
+      "tapXiong4_3_kr": [
+        {
+          "File": "motions/tapXiong4_3_kr.motion3.json"
+        }
+      ]
+    },
+    "Expressions": []
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeROpen",
+        "ParamEyeLOpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

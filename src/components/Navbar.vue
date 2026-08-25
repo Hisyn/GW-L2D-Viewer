@@ -132,7 +132,7 @@
           <span>Changelog</span>
         </button>
         <a
-          href="https://hisyn.github.io/GW-L2D-Viewer"
+          href="https://github.com/Hisyn/GW-L2D-Viewer"
           target="_blank"
           rel="noopener"
           class="flex items-center gap-2"

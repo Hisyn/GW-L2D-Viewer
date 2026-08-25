@@ -3,7 +3,7 @@
   <div>
     <nav class="flex items-center justify-between bg-black text-white p-1">
       <img src="@/assets/other_icons/gwlogo_transparent.png" alt="Girl Wars L2D Viewers" class="h-20 md:h-20 w-auto" />
-      <div class="hidden md:flex items-end gap-4 self-end pb-1">
+      <div class="hidden md:flex items-end gap-2 self-end pb-1">
         <button class="cursor-pointer" @click="showUploadModal = true" title="Upload custom Spine model">
           <PlusIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
@@ -64,13 +64,13 @@
         <button class="cursor-pointer" @click="showChangelog = true" title="Changelog">
           <ChangelogIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
-        <a href="https://hisyn.github.io/GW-L2D-Viewer" target="_blank" title="Open GitHub repository">
+        <a href="https://github.com/Hisyn/GW-L2D-Viewer" target="_blank" title="Open GitHub repository">
           <GithubIcon class="w-5 h-5 md:w-7 md:h-7" />
         </a>
       </div>
       <button
         data-tutorial="mobile-menu-button"
-        class="md:hidden cursor-pointer"
+        class="md:hidden cursor-pointer items-end gap-2 self-end pb-1"
         @click="openMobileMenu()"
         aria-label="Menu"
       >

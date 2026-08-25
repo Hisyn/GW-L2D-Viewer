@@ -427,7 +427,7 @@ export default {
     "1054": {
     "charName": "Guan Yu",
     "costumeName": "SSR",
-    "spine": "Painting_1054",
+    "spine": "painting_1054",
     "cutscene": "105404",
     "dating": "1054",
     "audio": ""
@@ -443,7 +443,7 @@ export default {
     "1056": {
     "charName": "Sasaki Kojiro",
     "costumeName": "SSR",
-    "spine": "Painting_1056",
+    "spine": "painting_1056",
     "cutscene": "105604",
     "dating": "1056",
     "audio": ""
@@ -545,7 +545,7 @@ export default {
     "audio": ""
   },
     "1098": {
-    "charName": "1098",
+    "charName": "Yatogami Tohka",
     "costumeName": "SSR",
     "spine": "Painting_1098",
     "cutscene": "109804",
@@ -553,7 +553,7 @@ export default {
     "audio": ""
   },
     "1099": {
-    "charName": "1099",
+    "charName": "Tokisaki Kurumi",
     "costumeName": "SSR",
     "spine": "Painting_1099",
     "cutscene": "109904",
@@ -619,7 +619,7 @@ export default {
     "21044": {
     "charName": "Caesar",
     "costumeName": "UR",
-    "spine": "Painting_21044",
+    "spine": "painting_21044",
     "cutscene": "2104404",
     "dating": "1044",
     "audio": ""
@@ -659,7 +659,7 @@ export default {
     "21072": {
     "charName": "Chosokabe Motochika",
     "costumeName": "UR",
-    "spine": "Painting_21072",
+    "spine": "painting_21072",
     "cutscene": "2107204",
     "dating": "21072",
     "audio": ""
@@ -699,7 +699,7 @@ export default {
     "21077": {
     "charName": "Solomon",
     "costumeName": "UR",
-    "spine": "Painting_21077",
+    "spine": "painting_21077",
     "cutscene": "2107704",
     "dating": "21077",
     "audio": ""

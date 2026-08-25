@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <nav class="flex items-center justify-between bg-black text-white p-4">
-      <div class="text-xl md:text-3xl font-bold">Girl Wars L2D Viewer</div>
-      <div class="hidden md:flex items-center gap-4">
+    <nav class="flex items-center justify-between bg-black text-white p-1">
+      <img src="@/assets/other_icons/gwlogo_transparent.png" alt="Girl Wars L2D Viewers" class="h-20 md:h-20 w-auto" />
+      <div class="hidden md:flex items-end gap-4 self-end pb-1">
         <button class="cursor-pointer" @click="showUploadModal = true" title="Upload custom Spine model">
           <PlusIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>

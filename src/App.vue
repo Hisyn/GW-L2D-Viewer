@@ -27,36 +27,43 @@
         />
       </div>
       <main class="relative flex-1 p-2 overflow-hidden">
-        <div class="absolute top-2 left-2 lg:hidden z-50 flex items-center gap-2">
-          <button v-show="!overlayActive" class="p-2" @click="showMobileControls = true">
-            <MenuIcon />
+        <div
+          v-show="!overlayActive && !inspectMode"
+          class="absolute top-2 left-2 lg:hidden z-50 flex items-center gap-1 ml-2 rounded-2xl border border-gray-700/60 bg-gray-900/80 px-2 py-1 backdrop-blur-sm mt-2"
+        >
+          <button
+            title="Menu"
+            class="p-2 rounded-full transition-colors duration-150 hover:bg-gray-700/80 hover:text-indigo-300 active:scale-95"
+            @click="showMobileControls = true"
+          >
+            <AltMenuIcon />
           </button>
-          <button v-show="!overlayActive" class="p-2" @click="onResetCamera">
+          <button
+            title="Reset camera"
+            class="p-2 rounded-full transition-colors duration-150 hover:bg-gray-700/80 hover:text-indigo-300 active:scale-95"
+            @click="onResetCamera"
+          >
             <CameraResetIcon />
           </button>
           <button
-            v-show="!overlayActive"
-            class="p-2"
+            :title="store.playing ? 'Pause' : 'Play'"
+            class="p-2 rounded-full transition-colors duration-150 hover:bg-gray-700/80 hover:text-indigo-300 active:scale-95"
             @click="store.playing = !store.playing"
           >
             <PauseIcon v-if="store.playing" />
             <PlayIcon v-else />
           </button>
           <!-- <select
-            v-show="!overlayActive"
             v-model="store.selectedSkin"
             class="bg-gray-700 text-white"
           >
             <option v-for="skin in skins" :key="skin" :value="skin">{{ skin }}</option>
           </select> -->
-          <span
-          v-show="!overlayActive"
-          >Animation:
-          </span>
+          <span class="pl-1 text-sm text-gray-300">Animation:</span>
           <select
-            v-show="!overlayActive"
             v-model="store.selectedAnimation"
-            class="bg-gray-700 text-white"
+            title="Select animation"
+            class="rounded-md border border-gray-700/60 bg-gray-700/80 px-1.5 py-1 text-sm transition-colors duration-150 hover:bg-gray-600/80 focus:outline-none focus:ring-1 focus:ring-indigo-400"
           >
             <option v-for="name in animations" :key="name" :value="name">{{ name }}</option>
           </select>
@@ -124,7 +131,7 @@
       class="fixed inset-0 z-20 bg-gray-900 lg:hidden flex flex-col"
     >
       <button
-        class="absolute top-3 right-4"
+        class="absolute top-3 mt-1.5 right-4"
         @click="showMobileControls = false"
       >
         ✕
@@ -173,9 +180,10 @@ import { useSettingsStore } from '@/stores/settingsStore'
 import { buildUrl } from './utils/urlSync'
 
 import CameraResetIcon from '@/components/icons/CameraResetIcon.vue';
-import MenuIcon from '@/components/icons/MenuIcon.vue';
+//import MenuIcon from '@/components/icons/MenuIcon.vue';
 import PauseIcon from '@/components/icons/PauseIcon.vue';
 import PlayIcon from '@/components/icons/PlayIcon.vue';
+import AltMenuIcon from './components/icons/AltMenuIcon.vue'
 // import InspectAnimationIcon from '@/components/icons/InspectAnimationIcon.vue';
 // import LayerSelectIcon from '@/components/icons/LayerSelectIcon.vue';
 // import MinusIcon from '@/components/icons/MinusIcon.vue';

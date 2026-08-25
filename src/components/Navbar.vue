@@ -25,7 +25,7 @@
           <BgResetIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
         <!-- <a
-          href="https://ko-fi.com/jelosus1"
+          href="https://ko-fi.com/hisyn"
           target="_blank"
           rel="noopener"
           class="relative"
@@ -44,7 +44,7 @@
           </div>
         </a>
         <a
-          href="https://www.patreon.com/cw/jelosus1"
+          href="https://www.patreon.com/cw/hisyn"
           target="_blank"
           rel="noopener"
           title="Support on Patreon"
@@ -141,8 +141,8 @@
           <GithubIcon class="w-5 h-5" />
           <span>GitHub</span>
         </a>
-        <a
-          href="https://ko-fi.com/jelosus1"
+        <!-- <a
+          href="https://ko-fi.com/hisyn"
           target="_blank"
           rel="noopener"
           class="relative flex items-center gap-2"
@@ -160,7 +160,7 @@
           >
         </a>
         <a
-          href="https://www.patreon.com/cw/jelosus1"
+          href="https://www.patreon.com/cw/hisyn"
           target="_blank"
           rel="noopener"
           class="flex items-center gap-2"
@@ -168,7 +168,7 @@
         >
           <PatreonIcon class="w-5 h-5" />
           <span>Patreon</span>
-        </a>
+        </a> -->
       </div>
     </div>
 
@@ -200,8 +200,8 @@ import GithubIcon from '@/components/icons/GithubIcon.vue'
 import ChangelogIcon from '@/components/icons/ChangelogIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue'
 import MenuIcon from '@/components/icons/MenuIcon.vue'
-import KoFiIcon from '@/components/icons/KoFiIcon.vue'
-import PatreonIcon from '@/components/icons/PatreonIcon.vue'
+// import KoFiIcon from '@/components/icons/KoFiIcon.vue'
+// import PatreonIcon from '@/components/icons/PatreonIcon.vue'
 import BgUploadIcon from '@/components/icons/BgUploadIcon.vue'
 import BgResetIcon from '@/components/icons/BgResetIcon.vue'
 import SettingsIcon from '@/components/icons/SettingsIcon.vue'

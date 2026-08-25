@@ -2,7 +2,7 @@
   <div class="relative w-full h-full" data-tutorial="character-viewer">
     <div
       ref="toolbarRef"
-      class="absolute left-2 right-2 lg:right-auto flex flex-col gap-2 pointer-events-auto transition-opacity duration-150 z-40"
+      class="absolute left-2 right-2  lg:mt-1 right-auto flex flex-col gap-2 pointer-events-auto transition-opacity duration-150 z-40"
       :class="[
         showingMobileOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100',
         inspectMode ? 'top-2' : 'top-16 lg:top-2',
@@ -20,7 +20,7 @@
         <BgEditIcon />
       </button>
       <div
-        class="w-full lg:w-auto rounded-2xl bg-slate-900/70 p-2 backdrop-blur-sm"
+        class="w-full lg:w-auto rounded-2xl bg-gray-900/80 p-2 backdrop-blur-sm "
         :class="{ 'opacity-0 pointer-events-none': showingMobileOverlay }"
       >
         <div class="flex flex-wrap items-center gap-2">
@@ -30,7 +30,7 @@
             aria-label="Inspect animation"
             :aria-pressed="inspectMode"
             @click="emit('update:inspectMode', !inspectMode)"
-            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 hover:text-indigo-300 text-white transition-colors"
             :class="{ 'bg-indigo-600/90 hover:bg-indigo-500': inspectMode }"
           >
             <InspectAnimationIcon :active="inspectMode" />
@@ -39,7 +39,7 @@
           <button
             title="Layer selection mode"
             @click="store.layerSelectionEnabled = !store.layerSelectionEnabled"
-            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 hover:text-indigo-300 text-white transition-colors"
           >
             <LayerSelectIcon :active="store.layerSelectionEnabled" />
           </button>
@@ -47,7 +47,7 @@
             title="Zoom out"
             aria-label="Zoom out"
             @click="zoomOut"
-            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 hover:text-indigo-300 text-white transition-colors"
           >
             <MinusIcon />
           </button>
@@ -55,22 +55,30 @@
             title="Zoom in"
             aria-label="Zoom in"
             @click="zoomIn"
-            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 hover:text-indigo-300 text-white transition-colors"
           >
             <PlusIcon />
           </button>
+            <!-- <button
+              title="Reset view"
+              aria-label="Reset view"
+              @click="resetCamera"
+              class="w-9 h-9 p-2 rounded-md inline-flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
+            >
+              <CameraResetIcon />
+          </button> -->
            <button
             type="button"
-            title="Play Ultimate Ability Cutscene"
-            aria-label="Play video"
+            title="Play Animated Ultimate Skill"
+            aria-label="Play Animated Ultimate Skill"
             @click="openVideoModal"
             :disabled="!currentVideoUrl"
             v-show="currentVideoUrl && !showingMobileOverlay"
-            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-colors"
+            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-md text-xs lg:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-colors"
           >
-            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
-              <svg aria-hidden="true" viewBox="0 0 16 16" class="h-4 w-4 fill-current text-white">
-                <path d="M3 2.5v11l10-5.5-10-5.5Z" />
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z" clip-rule="evenodd" />
               </svg>
             </span>
             <span class="leading-none hidden sm:inline"> Animated Ultimate Skill</span>
@@ -85,13 +93,18 @@
             @mouseenter.prevent="onPrimeLive2D"
             @pointerdown.prevent="onPrimeLive2D"
             v-show="!showingMobileOverlay"
-            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-full text-xs lg:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-colors"
+            class="inline-flex  lg:w-auto items-center justify-center gap-2 h-11 lg:h-10 px-3 lg:px-4 rounded-md text-xs lg:text-sm font-semibold text-white bg-pink-600 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-colors"
           >
-            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
-              <span class="text-[9px] leading-none font-bold tracking-wide">L2D</span>
+            <span>
+               <img
+            src="@/assets/other_icons/ring.png"
+            alt="Bride Animations"
+            title="Bride Animations"
+            class="w-8 h-8 object-contain"
+          />
             </span>
             <span class="leading-none hidden sm:inline">Bride - Live2D</span>
-            <!-- <span class="leading-none sm:hidden">Bride</span> -->
+            <span class="leading-none sm:hidden">Bride</span>
           </button>
         </div>
 
@@ -100,7 +113,7 @@
         </div> -->
       </div>
     </div>
-    <div ref="viewerWrapper" class="relative w-full h-full">
+    <div ref="viewerWrapper" class="relative w-full h-full rounded-lg overflow-hidden bg-black/80">
       <div class="absolute inset-0 overflow-hidden" :style="backgroundContainerStyle">
         <div
           v-if="backgroundReady"
@@ -208,6 +221,7 @@ import InspectAnimationIcon from '@/components/icons/InspectAnimationIcon.vue'
 import LayerSelectIcon from '@/components/icons/LayerSelectIcon.vue'
 import MinusIcon from '@/components/icons/MinusIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue'
+//import CameraResetIcon from '@/components/icons/CameraResetIcon.vue'
 import VideoModal from '@/components/VideoModal.vue'
 import Live2dViewerModal from '@/components/Live2dViewerModal.vue'
 import { primeLive2D } from '@/utils/live2dPrime'

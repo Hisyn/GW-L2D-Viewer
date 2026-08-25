@@ -1001,6 +1001,87 @@ export default {
     "dating": "",
     "audio": ""
   },
+    "31116": {
+    "charName": "Odysseus",
+    "costumeName": "UR EX",
+    "spine": "Painting_31116",
+    "cutscene": "3111604",
+    "dating": "",
+    "audio": ""
+  },
+    "31117": {
+    "charName": "Sanzang",
+    "costumeName": "UR EX",
+    "spine": "Painting_31117",
+    "cutscene": "3111704",
+    "dating": "",
+    "audio": ""
+  },
+    "31118": {
+    "charName": "Tsukahara Bokuden",
+    "costumeName": "UR EX",
+    "spine": "Painting_31118",
+    "cutscene": "3111804",
+    "dating": "",
+    "audio": ""
+  },
+    "31119": {
+    "charName": "Morgan",
+    "costumeName": "UR EX",
+    "spine": "Painting_31119",
+    "cutscene": "3111904",
+    "dating": "",
+    "audio": ""
+  },
+    "31120": {
+    "charName": "Hannibal Barca",
+    "costumeName": "UR EX",
+    "spine": "Painting_31120",
+    "cutscene": "3112004",
+    "dating": "",
+    "audio": ""
+  },
+    "31121": {
+    "charName": "Oberon",
+    "costumeName": "UR EX",
+    "spine": "Painting_31121",
+    "cutscene": "3112104",
+    "dating": "",
+    "audio": ""
+  },
+    "31122": {
+    "charName": "Yagyu Jubei",
+    "costumeName": "UR EX",
+    "spine": "Painting_31122",
+    "cutscene": "3112204",
+    "dating": "",
+    "audio": ""
+  },
+      "31123": {
+    "charName": "Liu Bang",
+    "costumeName": "UR EX",
+    "spine": "Painting_31123",
+    "cutscene": "3112304",
+    "dating": "",
+    "audio": ""
+  },
+    "31124": {
+    "charName": "Richard",
+    "costumeName": "UR EX",
+    "spine": "Painting_31124",
+    "cutscene": "3112404",
+    "dating": "",
+    "audio": ""
+  },
+  /*special skins?
+    "91001": {
+    "charName": "Richard",
+    "costumeName": "UR EX",
+    "spine": "Painting_91001",
+    "cutscene": "",
+    "dating": "",
+    "audio": ""
+  },*/
 } as { [key: string]: {
   charName: string,
   costumeName: string,

@@ -1,18 +1,20 @@
 <template>
-  <div class="w-full lg:w-64 lg:h-full max-h-dvh lg:max-h-none overflow-hidden lg:overflow-visible bg-gray-800 text-white flex flex-col min-h-0">
+  <div
+  style="margin-top: 9px;margin-bottom: 9px;"
+  class="w-full lg:w-64 lg:h-full max-h-dvh lg:max-h-none overflow-hidden lg:overflow-visible bg-gray-800 text-white flex flex-col min-h-0 rounded-lg border border-gray-700">
     <div class="flex-1 min-h-0 px-2 flex flex-col gap-2">
       <div class="pt-2">
         <div class="inline-flex bg-gray-700/70 rounded-md p-1 gap-1">
           <button
             class="px-3 py-1 rounded text-sm transition-colors"
-            :class="sidebarTab === 'controls' ? 'bg-gray-600 text-white' : 'text-gray-300 hover:text-white'"
+            :class="sidebarTab === 'controls' ? 'bg-slate-900/70 text-white' : 'text-gray-300 hover:text-white'"
             @click="sidebarTab = 'controls'"
           >
             Controls
           </button>
           <button
             class="px-3 py-1 rounded text-sm transition-colors"
-            :class="sidebarTab === 'layers' ? 'bg-gray-600 text-white' : 'text-gray-300 hover:text-white'"
+            :class="sidebarTab === 'layers' ? 'bg-slate-900/70 text-white' : 'text-gray-300 hover:text-white'"
             @click="sidebarTab = 'layers'"
           >
             Layers
@@ -29,12 +31,12 @@
             <option v-for="skin in skins" :key="skin" :value="skin">{{ skin }}</option>
           </select> -->
           <span>Animations</span>
-          <div class="overflow-y-auto sidebar-scroll flex-1">
+          <div class="overflow-y-auto sidebar-scroll flex-1 space-y-1">
             <div
               v-for="name in animations"
               :key="name"
-              class="py-2 pl-2 cursor-pointer"
-              :class="{ 'bg-gray-700': name === selectedAnimation }"
+              class="py-2 pl-2 cursor-pointer rounded transition-colors hover:bg-slate-900/70"
+              :class="{ 'bg-slate-900/70': name === selectedAnimation }"
               @click="select(name)"
             >
               {{ name }}
@@ -48,7 +50,7 @@
           v-model="layerFilter"
           type="text"
           placeholder="Filter layers..."
-          class="bg-gray-700 text-white rounded px-2 py-1 text-sm"
+          class="bg-gray-700 text-white px-2 py-1 text-sm outline-none rounded-md placeholder-gray-400 focus:ring-2 focus:ring-slate-900/70 focus:border-slate-900/70"
         />
         <div class="overflow-y-auto sidebar-scroll flex-1 min-h-0">
           <div v-if="!filteredLayers.length" class="text-sm text-gray-400 px-2 py-2">
@@ -57,7 +59,7 @@
           <label
             v-for="layer in filteredLayers"
             :key="layer.key"
-            class="flex items-center gap-2 py-1 px-2 rounded cursor-pointer hover:bg-gray-700"
+            class="flex items-center gap-2 py-1 px-2 rounded cursor-pointer hover:bg-slate-900/70"
           >
             <input
               type="checkbox"
@@ -72,7 +74,7 @@
     <div class="lg:mt-auto flex flex-col">
       <div v-if="!currentChar?.customFiles" class="p-2">
         <span>Animation Category</span>
-        <select v-model="store.animationCategory" class="bg-gray-700 text-white w-full">
+        <select v-model="store.animationCategory" class="bg-gray-700 text-white w-full px-2 py-1 outline-none rounded-md placeholder-gray-400 focus:ring-2 focus:ring-slate-900/70 focus:border-slate-900/70">
           <option value="character">Character</option>
           <option value="ultimate" :disabled="!currentChar?.cutscene">Date</option>
           <!-- <option value="dating" :disabled="!currentChar?.dating">Fated Guest</option> -->

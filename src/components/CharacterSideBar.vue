@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full lg:w-full h-full bg-gray-800 text-white flex flex-col min-h-0">
-    <div class="flex items-center gap-2 mb-2">
+  <div style="margin-top: 9px;margin-bottom: 9px;" class="w-full lg:w-full h-full bg-gray-800 text-white flex flex-col min-h-0 rounded-lg border border-gray-700">
+    <div class="flex items-center gap-2 mb-2 rounded-lg bg-gray-800 px-2 py-1">
       <input
         v-model="filter"
         type="text"
         placeholder="Search..."
-        class="bg-gray-700 text-white p-2 outline-none flex-1 min-w-0"
+        class="bg-gray-700 text-white p-2 outline-none flex-1 min-w-0 rounded-md placeholder-gray-400 focus:ring-2 focus:ring-slate-900/70 focus:border-slate-900/70"
       />
       <button
         type="button"
@@ -25,12 +25,12 @@
         />
       </button>
     </div>
-    <div class="overflow-y-auto flex-1 px-2 sidebar-scroll">
+    <div class="overflow-y-auto flex-1 px-2 sidebar-scroll space-y-1">
       <div
         v-for="char in filteredCharacters"
         :key="char.id"
-        class="flex items-center py-2 cursor-pointer"
-        :class="{ 'bg-gray-700': char.id === store.selectedCharacterId }"
+        class="flex items-center py-2 cursor-pointer rounded-lg transition-colors hover:bg-slate-900/70"
+        :class="{ 'bg-slate-900/70': char.id === store.selectedCharacterId }"
         @click="select(char.id)"
       >
         <img
@@ -39,15 +39,25 @@
           class="w-30 h-30 object-cover object-top rounded-[50%] transition-transform duration-200 ease-out hover:scale-125"
         />
         <div class="flex-grow pl-2">
-          <span class="text-lg">{{ char.charName + ': ' + char.costumeName }}</span>
+          <img
+            v-if="rarityIcons[char.costumeName]"
+            :src="rarityIcons[char.costumeName]"
+            :alt="char.costumeName"
+            :title="char.costumeName"
+            class="h-8 align-text-bottom"
+          />
+          <span v-else class="text-lg">{{ char.costumeName }}</span>
+          <span class="text-lg">{{ char.charName }}</span>
+
         </div>
         <div class="flex flex-shrink-0 gap-1 pl-2 pr-2">
-          <div
+          <img
             v-if="char.dating"
-            class="w-auto h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded"
-          >
-            B
-          </div>
+            src="@/assets/other_icons/ring.png"
+            alt="Bride Animations"
+            title="Bride Animations"
+            class="w-10 h-10 object-contain"
+          />
           <!-- <div
             v-if="char.cutscene"
             class="w-auto h-6 px-2 bg-purple-500 text-white flex items-center justify-center text-xs font-bold rounded"
@@ -85,13 +95,30 @@
           <button
             type="button"
             class="w-full flex items-center justify-between gap-3 rounded border px-3 py-3 text-left transition-colors"
-            :class="showFatedGuestOnly ? 'border-blue-400 bg-blue-500/15' : 'border-gray-700 hover:bg-gray-700/70'"
+            :class="showFatedGuestOnly ? 'border-blue-400 bg-blue-500/15' : 'border-gray-700 hover:bg-slate-900/70'"
             :aria-pressed="showFatedGuestOnly"
             @click="showFatedGuestOnly = !showFatedGuestOnly"
           >
             <span class="text-sm text-gray-100">Bride Animations</span>
-            <span class="h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded">B</span>
+            <img src="@/assets/other_icons/ring.png" alt="Bride Animations" class="w-6 h-6 object-contain" />
           </button>
+
+          <div class="rounded border border-gray-700 px-3 py-3">
+            <span class="text-sm text-gray-100 block mb-2">Rarity</span>
+            <div class="flex flex-wrap gap-2">
+              <button
+                v-for="rarity in rarityOptions"
+                :key="rarity"
+                type="button"
+                class="flex items-center justify-center rounded border px-2 py-1 transition-colors"
+                :class="selectedRarities.has(rarity) ? 'border-indigo-400 bg-indigo-500/15' : 'border-gray-700 hover:bg-slate-900/70'"
+                :aria-pressed="selectedRarities.has(rarity)"
+                @click="toggleRarity(rarity)"
+              >
+                <img :src="rarityIcons[rarity]" :alt="rarity" :title="rarity" class="h-5" />
+              </button>
+            </div>
+          </div>
 
           <!-- <button
             type="button"
@@ -104,7 +131,7 @@
             <span class="h-6 px-2 bg-purple-500 text-white flex items-center justify-center text-xs font-bold rounded">U</span>
           </button> -->
 
-          <button
+          <!-- <button
             type="button"
             class="w-full flex items-center justify-between gap-3 rounded border px-3 py-3 text-left transition-colors"
             :class="characterTypeFilter === 'playable' ? 'border-emerald-400 bg-emerald-500/15' : 'border-gray-700 hover:bg-gray-700/70'"
@@ -124,7 +151,7 @@
           >
             <span class="text-sm text-gray-100">NPCs</span>
             <span class="h-6 px-2 bg-amber-500 text-white flex items-center justify-center text-xs font-bold rounded">NPC</span>
-          </button>
+          </button> -->
         </div>
 
         <div class="flex justify-end gap-2 mt-5">
@@ -146,6 +173,18 @@
 import icons from '@/utils/charIcons';
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
+import urExIcon from '@/assets/other_icons/ur_ex.png'
+import ssrIcon from '@/assets/other_icons/ssr.png'
+import srIcon from '@/assets/other_icons/sr.png'
+import urIcon from '@/assets/other_icons/ur.png'
+
+const rarityIcons: Record<string, string> = {
+  'UR EX': urExIcon,
+  SSR: ssrIcon,
+  SR: srIcon,
+  UR: urIcon,
+}
+const rarityOptions = ['SR', 'SSR', 'UR', 'UR EX'] as const
 
 const emit = defineEmits(['select'])
 const store = useCharacterStore()
@@ -155,8 +194,9 @@ const filterModalOpen = ref(false)
 const showFatedGuestOnly = ref(false)
 const showUltimateOnly = ref(false)
 const characterTypeFilter = ref<'all' | 'playable' | 'npc'>('all')
+const selectedRarities = ref<Set<string>>(new Set())
 const hasActiveFilters = computed(
-  () => showFatedGuestOnly.value || showUltimateOnly.value || characterTypeFilter.value !== 'all',
+  () => showFatedGuestOnly.value || showUltimateOnly.value || characterTypeFilter.value !== 'all' || selectedRarities.value.size > 0,
 )
 
 const filteredCharacters = computed(() =>
@@ -170,9 +210,17 @@ const filteredCharacters = computed(() =>
       characterTypeFilter.value === 'all' ||
       (characterTypeFilter.value === 'npc' && isNpc) ||
       (characterTypeFilter.value === 'playable' && !isNpc)
-    return matchesSearch && matchesFatedGuest && matchesUltimate && matchesCharacterType
+    const matchesRarity = selectedRarities.value.size === 0 || selectedRarities.value.has(c.costumeName)
+    return matchesSearch && matchesFatedGuest && matchesUltimate && matchesCharacterType && matchesRarity
   })
 )
+
+function toggleRarity(rarity: string) {
+  const next = new Set(selectedRarities.value)
+  if (next.has(rarity)) next.delete(rarity)
+  else next.add(rarity)
+  selectedRarities.value = next
+}
 
 function select(id: string) {
   if (id === store.selectedCharacterId) return
@@ -184,6 +232,7 @@ function resetFilters() {
   showFatedGuestOnly.value = false
   showUltimateOnly.value = false
   characterTypeFilter.value = 'all'
+  selectedRarities.value = new Set()
 }
 
 function onKeyDown(event: KeyboardEvent) {

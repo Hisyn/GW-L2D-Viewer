@@ -131,7 +131,7 @@ export default {
     "1017": {
     "charName": "Napoleon",
     "costumeName": "SSR",
-    "spine": "Painting_1017",
+    "spine": "painting_1017",
     "cutscene": "101704",
     "dating": "",
     "audio": ""
@@ -299,7 +299,7 @@ export default {
     "1038": {
     "charName": "Mordred",
     "costumeName": "SSR",
-    "spine": "Painting_1038",
+    "spine": "painting_1038",
     "cutscene": "103804",
     "dating": "1038",
     "audio": ""
@@ -307,7 +307,7 @@ export default {
     "1039": {
     "charName": "Merlin",
     "costumeName": "SSR",
-    "spine": "Painting_1039",
+    "spine": "painting_1039",
     "cutscene": "103904",
     "dating": "1039",
     "audio": ""
@@ -315,7 +315,7 @@ export default {
     "1040": {
     "charName": "Cleopatra",
     "costumeName": "SSR",
-    "spine": "Painting_1040",
+    "spine": "painting_1040",
     "cutscene": "104004",
     "dating": "",
     "audio": ""
@@ -339,7 +339,7 @@ export default {
     "1043": {
     "charName": "Constantine",
     "costumeName": "SSR",
-    "spine": "Painting_1043",
+    "spine": "painting_1043",
     "cutscene": "104304",
     "dating": "1043",
     "audio": ""
@@ -355,7 +355,7 @@ export default {
     "1045": {
     "charName": "Kobayakawa Hideaki",
     "costumeName": "SSR",
-    "spine": "Painting_1045",
+    "spine": "painting_1045",
     "cutscene": "104504",
     "dating": "1045",
     "audio": ""
@@ -363,7 +363,7 @@ export default {
     "1046": {
     "charName": "Leonidas I",
     "costumeName": "SSR",
-    "spine": "Painting_1046",
+    "spine": "painting_1046",
     "cutscene": "104604",
     "dating": "1046",
     "audio": ""
@@ -371,7 +371,7 @@ export default {
     "1047": {
     "charName": "Ishida Mitsunari",
     "costumeName": "SSR",
-    "spine": "Painting_1047",
+    "spine": "painting_1047",
     "cutscene": "104704",
     "dating": "1047",
     "audio": ""
@@ -403,7 +403,7 @@ export default {
     "1051": {
     "charName": "Takenaka Hanbei",
     "costumeName": "SSR",
-    "spine": "Painting_1051",
+    "spine": "painting_1051",
     "cutscene": "105104",
     "dating": "",
     "audio": ""

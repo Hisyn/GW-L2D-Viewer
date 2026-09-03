@@ -965,7 +965,7 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31111",
     "cutscene": "3111104",
-    "dating": "",
+    "dating": "31111",
     "audio": ""
   },
     "31112": {
@@ -981,7 +981,7 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31113",
     "cutscene": "3111304",
-    "dating": "",
+    "dating": "31113",
     "audio": ""
   },
     "31114": {
@@ -1070,6 +1070,30 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31124",
     "cutscene": "3112404",
+    "dating": "",
+    "audio": ""
+  },
+    "31125": {
+    "charName": "Yamato Takeru",
+    "costumeName": "UR EX",
+    "spine": "Painting_31125",
+    "cutscene": "3112504",
+    "dating": "",
+    "audio": ""
+  },
+    "31126": {
+    "charName": "Kashin Koji",
+    "costumeName": "UR EX",
+    "spine": "Painting_31126",
+    "cutscene": "3112604",
+    "dating": "",
+    "audio": ""
+  },
+    "31127": {
+    "charName": "Dong Zhuo",
+    "costumeName": "UR EX",
+    "spine": "Painting_31127",
+    "cutscene": "3112704",
     "dating": "",
     "audio": ""
   },

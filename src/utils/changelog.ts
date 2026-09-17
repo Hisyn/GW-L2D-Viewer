@@ -1,4 +1,13 @@
 export default [
+    {
+    "date": "09/17/2026",
+    "changes": [
+      "Brides with available interaction video showcases will be highlighted with a special pulsating indicator under the character's name.",
+      "The Bride Live 2D Cubisms viewer has been updated with new panning functionality.",
+      "Updated Scathach: Added Bride animations.",
+      "Added Ozymandias: Idle, Date and Ultimate skill animations.",
+    ]
+  },
   {
     "date": "09/02/2026",
     "changes": [

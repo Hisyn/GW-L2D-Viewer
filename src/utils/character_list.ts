@@ -982,14 +982,15 @@ export default {
     "spine": "Painting_31113",
     "cutscene": "3111304",
     "dating": "31113",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2100172533836484879"
   },
     "31114": {
     "charName": "Scathach",
     "costumeName": "UR EX",
     "spine": "Painting_31114",
     "cutscene": "3111404",
-    "dating": "",
+    "dating": "31114",
     "icon": "31114",
     "audio": "DUBVOICE_31114_BEDTOUCHA1"
   },
@@ -1097,6 +1098,14 @@ export default {
     "dating": "",
     "audio": ""
   },
+    "31128": {
+    "charName": "Ozymandias",
+    "costumeName": "UR EX",
+    "spine": "Painting_31128",
+    "cutscene": "3112804",
+    "dating": "",
+    "audio": ""
+  },
   /*special skins?
     "91001": {
     "charName": "Richard",
@@ -1114,6 +1123,7 @@ export default {
   dating: string,
   icon?: string,
   datingUsesTracks?: boolean,
-  audio: string
+  audio: string,
+  showcase_link?: string
 }
  }

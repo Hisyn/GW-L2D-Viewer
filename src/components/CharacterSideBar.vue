@@ -48,14 +48,15 @@
           />
           <span v-else class="text-lg">{{ char.costumeName }}</span>
           <span class="text-lg">{{ char.charName }}</span>
+          <div v-if="char.showcase_link" class="showcase-pulse text-xs font-semibold text-pink-400">Bride Showcase Available</div>
 
         </div>
         <div class="flex flex-shrink-0 gap-1 pl-2 pr-2">
           <img
             v-if="char.dating"
             src="@/assets/other_icons/ring.png"
-            alt="Bride Animations"
-            title="Bride Animations"
+            alt="Bride"
+            title="Bride"
             class="w-10 h-10 object-contain"
           />
           <!-- <div
@@ -99,8 +100,8 @@
             :aria-pressed="showFatedGuestOnly"
             @click="showFatedGuestOnly = !showFatedGuestOnly"
           >
-            <span class="text-sm text-gray-100">Bride Animations</span>
-            <img src="@/assets/other_icons/ring.png" alt="Bride Animations" class="w-6 h-6 object-contain" />
+            <span class="text-sm text-gray-100">Bride</span>
+            <img src="@/assets/other_icons/ring.png" alt="Bride" class="w-6 h-6 object-contain" />
           </button>
 
           <div class="rounded border border-gray-700 px-3 py-3">
@@ -250,3 +251,13 @@ onUnmounted(() => {
   window.removeEventListener('keydown', onKeyDown)
 })
 </script>
+
+<style scoped>
+@keyframes showcase-fade {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.showcase-pulse {
+  animation: showcase-fade 2s ease-in-out infinite;
+}
+</style>

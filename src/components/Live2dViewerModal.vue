@@ -32,8 +32,16 @@
                   <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="centerModel()">Center it</button>
                   <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="zoomModel(1.15)">Zoom In</button>
                   <button type="button" class="rounded-full border border-slate-600 bg-slate-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wide text-slate-200 transition hover:border-emerald-400 hover:text-white" @click="zoomModel(0.85)">Zoom Out</button>
+                  <button v-if="showcaseLink" type="button" class="showcase-pulse rounded-full border border-pink-500/60 bg-pink-500/10 px-2.5 py-1 text-[10px] uppercase tracking-wide text-pink-200 transition hover:border-pink-400 hover:text-white" @click="openShowcase()">Showcase Video</button>
                 </div>
-                <div ref="canvasHost" class="relative mx-auto flex h-[40vh] sm:h-[56vh] lg:h-[64vh] max-h-[74vh] min-h-[230px] sm:min-h-[320px] w-full items-center justify-center overflow-hidden rounded-xl border border-emerald-400/20 bg-slate-950/70">
+                <div
+                  ref="canvasHost"
+                  class="relative mx-auto flex h-[40vh] sm:h-[56vh] lg:h-[64vh] max-h-[74vh] min-h-[230px] sm:min-h-[320px] w-full items-center justify-center overflow-hidden rounded-xl border border-emerald-400/20 bg-slate-950/70 cursor-grab active:cursor-grabbing"
+                  @pointerdown="onCanvasPointerDown"
+                  @pointermove="onCanvasPointerMove"
+                  @pointerup="onCanvasPointerUp"
+                  @pointercancel="onCanvasPointerUp"
+                >
                   <div v-if="loading" class="absolute inset-0 flex items-center justify-center text-sm text-slate-300">
                     Loading Live2D model...
                   </div>
@@ -136,6 +144,12 @@ const live2dAssetModules = import.meta.glob('../assets/live2dcubism/**/*.{json,p
 let currentApp: PIXI.Application | null = null
 let currentModel: Live2DModelInstance | null = null
 let modelScale = 0.52
+let panOffsetX = 0
+let panOffsetY = 0
+let isPanning = false
+let panPointerId: number | null = null
+let panLastX = 0
+let panLastY = 0
 let componentActive = true
 let renderSessionId = 0
 const cubismPrimed = ref(false)
@@ -160,6 +174,16 @@ const resolvedCharacterName = computed(() => {
   const char = characterList[props.characterId]
   return char?.charName || props.characterId
 })
+
+const showcaseLink = computed(() => {
+  if (!props.characterId) return null
+  return characterList[props.characterId]?.showcase_link || null
+})
+
+function openShowcase() {
+  if (!showcaseLink.value) return
+  window.open(showcaseLink.value, '_blank', 'noopener,noreferrer')
+}
 
 function resolveLive2dAssetUrl(folderName: string, relativePath: string) {
   const base = import.meta.env.BASE_URL || './'
@@ -246,23 +270,50 @@ function applyModelTransform() {
   }
 
   const host = canvasHost.value
-  currentModel.x = (host.clientWidth || 800) / 2
-  currentModel.y = (host.clientHeight || 480) * 0.62
+  currentModel.x = (host.clientWidth || 800) / 2 + panOffsetX
+  currentModel.y = (host.clientHeight || 480) * 0.62 + panOffsetY
   currentModel.scale.set(modelScale, modelScale)
   currentModel.anchor.set(0.5, 0.6)
+}
+
+function onCanvasPointerDown(event: PointerEvent) {
+  if (event.button !== 0 || !canvasHost.value) return
+  isPanning = true
+  panPointerId = event.pointerId
+  panLastX = event.clientX
+  panLastY = event.clientY
+  canvasHost.value.setPointerCapture(event.pointerId)
+}
+
+function onCanvasPointerMove(event: PointerEvent) {
+  if (!isPanning || event.pointerId !== panPointerId) return
+  panOffsetX += event.clientX - panLastX
+  panOffsetY += event.clientY - panLastY
+  panLastX = event.clientX
+  panLastY = event.clientY
+  applyModelTransform()
+}
+
+function onCanvasPointerUp(event: PointerEvent) {
+  if (event.pointerId !== panPointerId) return
+  isPanning = false
+  panPointerId = null
+  canvasHost.value?.releasePointerCapture(event.pointerId)
 }
 
 function displayAllModel() {
   if (!currentModel) return
   modelScale = 0.52
+  panOffsetX = 0
+  panOffsetY = 0
   applyModelTransform()
 }
 
 function centerModel() {
   if (!currentModel || !canvasHost.value) return
-  const host = canvasHost.value
-  currentModel.x = (host.clientWidth || 800) / 2
-  currentModel.y = (host.clientHeight || 480) * 0.62
+  panOffsetX = 0
+  panOffsetY = 0
+  applyModelTransform()
 }
 
 function zoomModel(factor: number) {
@@ -490,6 +541,8 @@ async function renderLive2DModel() {
     })
 
     modelScale = 0.52
+    panOffsetX = 0
+    panOffsetY = 0
     applyModelTransform()
     currentApp.stage.addChild(currentModel as unknown as PIXI.DisplayObject)
     motionNames.value = modelInfo.value.motionNames
@@ -577,4 +630,12 @@ onBeforeUnmount(() => {
 <style scoped>
 .z-60 { z-index: 60; }
 .z-70 { z-index: 70; }
+
+@keyframes showcase-fade {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.showcase-pulse {
+  animation: showcase-fade 2s ease-in-out infinite;
+}
 </style>

@@ -103,8 +103,11 @@
             class="w-8 h-8 object-contain"
           />
             </span>
-            <span class="leading-none hidden sm:inline">Bride - Live2D</span>
-            <span class="leading-none sm:hidden">Bride</span>
+            <span class="leading-none flex flex-col items-start">
+              <span class="hidden sm:inline" :class="{ 'showcase-fade': hasShowcaseLink }">Bride - Live2D</span>
+              <span class="sm:hidden" :class="{ 'showcase-fade': hasShowcaseLink }">Bride</span>
+              <span v-if="hasShowcaseLink" class="text-[10px] font-normal leading-none showcase-fade">Showcase Available</span>
+            </span>
           </button>
         </div>
 
@@ -308,6 +311,12 @@ const hasLive2dViewer = computed(() => {
   const folderName = String(selected.dating).trim()
   if (!folderName) return false
   return Object.keys(import.meta.glob('../assets/live2dcubism/**/*', { eager: false, query: '?url', import: 'default' })).some(path => path.includes(`/live2dcubism/${folderName}/`))
+})
+
+const hasShowcaseLink = computed(() => {
+  const id = store.selectedCharacterId
+  if (!id) return false
+  return !!store.characters.find(char => char.id === id)?.showcase_link
 })
 
 // Automatically prime the Live2D runtime when a character with Live2D assets becomes available
@@ -3424,6 +3433,13 @@ function exportAnimationFrames(transparent: boolean): Promise<void> {
 defineExpose({ resetCamera, zoomIn, zoomOut, saveScreenshot, exportAnimation, exportAnimationFrames })
 </script>
 <style scoped>
+@keyframes showcase-fade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.showcase-fade {
+  animation: showcase-fade 2s ease-in-out infinite;
+}
 .seek-range {
   -webkit-appearance: none;
   appearance: none;

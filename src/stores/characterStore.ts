@@ -12,6 +12,7 @@ export interface Character {
   audio: string
   icon: string,
   datingUsesTracks?: boolean,
+  showcase_link?: string,
   customFiles?: {
     skel?: string,
     json?: string,

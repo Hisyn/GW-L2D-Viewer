@@ -101,8 +101,9 @@ export default {
     "costumeName": "SR",
     "spine": "Painting_1013",
     "cutscene": "101304",
-    "dating": "",
-    "audio": ""
+    "dating": "1013",
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2108816399779135658"
   },
     "1014": {
     "charName": "Naoe Kanetsugu",
@@ -937,12 +938,13 @@ export default {
     "audio": ""
   },
     "31108": {
-    "charName": "Leonardo da Vinci",
+    "charName": "Leonardo Da Vinci",
     "costumeName": "UR EX",
     "spine": "Painting_31108",
     "cutscene": "3110804",
     "dating": "31108",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2108522236126843287"
   },
     "31109": {
     "charName": "Orion",
@@ -992,7 +994,8 @@ export default {
     "cutscene": "3111404",
     "dating": "31114",
     "icon": "31114",
-    "audio": "DUBVOICE_31114_BEDTOUCHA1"
+    "audio": "DUBVOICE_31114_BEDTOUCHA1",
+    "showcase_link": "https://x.com/nolimitver/status/2104072597797523960"
   },
     "31115": {
     "charName": "Minamoto no Yorimitsu",
@@ -1103,6 +1106,14 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31128",
     "cutscene": "3112804",
+    "dating": "",
+    "audio": ""
+  },
+    "31129": {
+    "charName": "Roland",
+    "costumeName": "UR EX",
+    "spine": "Painting_31129",
+    "cutscene": "3112904",
     "dating": "",
     "audio": ""
   },

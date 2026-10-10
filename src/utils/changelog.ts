@@ -1,5 +1,13 @@
 export default [
-    {
+  {
+    "date": "10/10/2026",
+    "changes": [
+      "Added Bride interactions showcase links for Honda Komatsu, Leonardo Da Vinci and Scathach.",
+      "Updated Honda Komatsu: Added Bride animations.",
+      "Added Roland: Idle, Date and Ultimate skill animations.",
+    ]
+  },
+  {
     "date": "09/17/2026",
     "changes": [
       "Brides with available interaction video showcases will be highlighted with a special pulsating indicator under the character's name.",

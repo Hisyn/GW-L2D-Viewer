@@ -21,7 +21,7 @@ export default {
     "costumeName": "SR",
     "spine": "Painting_1003",
     "cutscene": "100304",
-    "dating": "",
+    "dating": "1003",
     "audio": ""
   },
     "1004": {
@@ -406,7 +406,7 @@ export default {
     "costumeName": "SSR",
     "spine": "painting_1051",
     "cutscene": "105104",
-    "dating": "",
+    "dating": "1051",
     "audio": ""
   },
     "1052": {
@@ -759,7 +759,8 @@ export default {
     "spine": "Painting_21084",
     "cutscene": "2108404",
     "dating": "21084",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2115998918521860188"
   },
     "21085": {
     "charName": "Heracles",
@@ -807,7 +808,8 @@ export default {
     "spine": "Painting_21090",
     "cutscene": "2109004",
     "dating": "21090",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2116491993006428225"
   },
     "21101": {
     "charName": "Achilles",
@@ -823,7 +825,8 @@ export default {
     "spine": "Painting_21104",
     "cutscene": "2110404",
     "dating": "21104",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2112755166168707222"
   },
     "31012": {
     "charName": "Sanada Yukimura",
@@ -911,7 +914,8 @@ export default {
     "spine": "Painting_31103",
     "cutscene": "3110304",
     "dating": "31103",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2110570140257702294"
   },
     "31105": {
     "charName": "Kamiizumi Nobutsuna",
@@ -927,7 +931,8 @@ export default {
     "spine": "Painting_31106",
     "cutscene": "3110604",
     "dating": "31106",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2113472078963970240"
   },
     "31107": {
     "charName": "Dante",
@@ -952,7 +957,8 @@ export default {
     "spine": "Painting_31109",
     "cutscene": "3110904",
     "dating": "31109",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2112359609986118010"
   },
     "31110": {
     "charName": "Yao Bikuni",
@@ -968,7 +974,8 @@ export default {
     "spine": "Painting_31111",
     "cutscene": "3111104",
     "dating": "31111",
-    "audio": ""
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2113917943725818079"
   },
     "31112": {
     "charName": "Ashiya Doman",
@@ -1002,8 +1009,9 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31115",
     "cutscene": "3111504",
-    "dating": "",
-    "audio": ""
+    "dating": "31115",
+    "audio": "",
+    "showcase_link": "https://x.com/nolimitver/status/2114640699123785827"
   },
     "31116": {
     "charName": "Odysseus",
@@ -1114,6 +1122,14 @@ export default {
     "costumeName": "UR EX",
     "spine": "Painting_31129",
     "cutscene": "3112904",
+    "dating": "",
+    "audio": ""
+  },
+    "31130": {
+    "charName": "Maeve",
+    "costumeName": "UR EX",
+    "spine": "Painting_31130",
+    "cutscene": "3113004",
     "dating": "",
     "audio": ""
   },

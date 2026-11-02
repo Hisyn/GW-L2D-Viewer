@@ -1,5 +1,14 @@
 export default [
   {
+    "date": "11/01/2026",
+    "changes": [
+      "Added Bride interactions showcase links for Tamamo-no-Mae, Orion, Li Bai, Perseus, Xiang Yu, Minamoto no Yorimitsu, Himiko & Huang Zhong.",
+      "Issue #2 Solved for Lancelot: Added Bride animations.",
+      "Updated Takenaka Hanbei & Minamoto no Yorimitsu: Added Bride animations.",
+      "Added Maeve: Idle, Date and Ultimate skill animations.",
+    ]
+  },
+  {
     "date": "10/10/2026",
     "changes": [
       "Added Bride interactions showcase links for Honda Komatsu, Leonardo Da Vinci and Scathach.",
